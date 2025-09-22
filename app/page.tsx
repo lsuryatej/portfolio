@@ -1,22 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { Github, Star, Zap } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header with theme toggle */}
-      <header className="border-b">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <h1 className="text-xl font-semibold">Portfolio Foundation</h1>
-          <ThemeToggle />
-        </div>
-      </header>
-
+    <div className="bg-background">
       {/* Main content */}
-      <main className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="mx-auto max-w-4xl space-y-12">
           {/* Hero section */}
           <section className="text-center">
@@ -159,7 +150,7 @@ console.log(greeting);`}</code>
             </Card>
           </section>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

@@ -21,7 +21,7 @@
   - Set up icon system with Lucide React
   - _Requirements: 12.1, 12.3, 12.4_
 
-- [ ] 4. Build core layout and navigation components
+- [x] 4. Build core layout and navigation components
   - Create root layout with navigation header and footer
   - Implement sticky navigation with scroll-aware styling transitions
   - Build responsive mobile navigation with hamburger menu
