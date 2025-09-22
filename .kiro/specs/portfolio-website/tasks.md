@@ -28,7 +28,7 @@
   - Add theme toggle functionality with smooth transitions
   - _Requirements: 5.1, 5.3, 12.1_
 
-- [ ] 5. Implement motion system foundation
+- [x] 5. Implement motion system foundation
   - Create motion tokens file with durations, easings, and animation constants
   - Build reusable motion primitives (FadeIn, RiseIn, ScaleIn, StaggerChildren)
   - Set up Lenis smooth scrolling with reduced motion detection
