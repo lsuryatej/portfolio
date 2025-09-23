@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 
 import { RiseIn, FadeIn } from '@/lib/motion/primitives';
 import { cn } from '@/lib/utils';
+import { BeforeAfterSlider, ScrollSequence, VideoScrollSequence } from './index';
 
 // Custom heading component with anchor links
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
@@ -210,4 +211,8 @@ export const MDXComponents = {
   a: CustomLink,
   strong: CustomStrong,
   em: CustomEm,
+  // Advanced project components
+  BeforeAfterSlider,
+  ScrollSequence,
+  VideoScrollSequence,
 };

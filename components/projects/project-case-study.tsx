@@ -11,7 +11,9 @@ import {
   MediaGallery,
   ProjectHeader,
   ProjectMeta,
-  ProjectMDXContent
+  ProjectMDXContent,
+  ChapterNavigation,
+  BackToTop
 } from './index';
 
 interface ProjectCaseStudyProps {
@@ -19,6 +21,12 @@ interface ProjectCaseStudyProps {
 }
 
 export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
+  // Transform chapters for navigation if available
+  const navigationChapters = project.chapters?.map((chapter: { title: string; anchor: string }) => ({
+    id: chapter.anchor,
+    title: chapter.title,
+    anchor: chapter.anchor,
+  })) || [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -69,6 +77,14 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
           </main>
         </div>
       </div>
+
+      {/* Advanced Navigation Features */}
+      {navigationChapters.length > 0 && (
+        <ChapterNavigation chapters={navigationChapters} />
+      )}
+      
+      {/* Back to Top Button */}
+      <BackToTop />
     </div>
   );
 }

@@ -9,3 +9,7 @@ export { ProjectHeader } from './project-header';
 export { ProjectMeta } from './project-meta';
 export { MDXComponents } from './mdx-components';
 export { ProjectMDXContent } from './project-mdx-content';
+export { BeforeAfterSlider } from './before-after-slider';
+export { ScrollSequence, VideoScrollSequence } from './scroll-sequence';
+export { ChapterNavigation } from './chapter-navigation';
+export { BackToTop, FloatingProgress } from './back-to-top';
