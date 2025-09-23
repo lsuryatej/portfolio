@@ -63,14 +63,14 @@
   - Add "back to top" floating action button with morphing animation
   - _Requirements: 3.4, 3.5, 1.6_
 
-- [ ] 10. Create blog system with enhanced reading experience
+- [x] 10. Create blog system with enhanced reading experience
   - Build blog listing page with post cards and pagination
   - Create blog post layout with MDX component rendering
   - Implement reading progress bar tied to scroll position
   - Add syntax highlighting for code blocks using Shiki
   - _Requirements: 4.1, 4.2_
 
-- [ ] 11. Build about page with timeline and skills
+- [x] 11. Build about page with timeline and skills
   - Create timeline component with scroll-triggered animations
   - Implement skills section with animated proficiency bars
   - Add press logos section with hover effects

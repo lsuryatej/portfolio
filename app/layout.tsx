@@ -4,6 +4,7 @@ import { fontSans, fontMono, fontDisplay } from '@/lib/typography';
 import { ThemeProvider } from '@/components/theme-provider';
 import { MotionProvider } from '@/components/motion-provider';
 import { Navigation, Footer } from '@/components/site';
+import { ReadingProgressClient } from '@/components/blog/reading-progress-client';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Professional Web Developer',
@@ -27,6 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <MotionProvider>
+            <ReadingProgressClient />
             <div className="flex min-h-screen flex-col">
               <Navigation />
               <main className="flex-1">

@@ -323,3 +323,67 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
   }
+
+/* Syntax highlighting styles for rehype-pretty-code */
+@layer base {
+  /* Code block styles */
+  pre {
+    @apply overflow-x-auto rounded-lg border bg-muted/50 p-4 text-sm;
+  }
+  
+  pre code {
+    @apply bg-transparent p-0 text-sm;
+    counter-reset: line;
+  }
+  
+  /* Line numbers */
+  code[data-line-numbers] {
+    counter-reset: line;
+  }
+  
+  code[data-line-numbers] > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+    @apply mr-4 inline-block w-4 text-right text-muted-foreground/60;
+  }
+  
+  /* Highlighted lines */
+  [data-highlighted-line] {
+    @apply bg-primary/10 border-l-2 border-primary pl-4 -ml-4;
+  }
+  
+  /* Highlighted words */
+  [data-highlighted-chars] {
+    @apply bg-primary/20 rounded px-1;
+  }
+  
+  /* Line highlight on hover */
+  pre:hover [data-line] {
+    @apply bg-muted/30;
+  }
+  
+  /* Code title */
+  [data-rehype-pretty-code-title] {
+    @apply rounded-t-lg border border-b-0 bg-muted px-4 py-2 text-sm font-medium;
+  }
+  
+  [data-rehype-pretty-code-title] + pre {
+    @apply rounded-t-none;
+  }
+  
+  /* Inline code */
+  :not(pre) > code {
+    @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-medium;
+  }
+  
+  /* Copy button styles */
+  [data-rehype-pretty-code-fragment] {
+    @apply relative;
+  }
+  
+  /* Language badge */
+  [data-language]::before {
+    content: attr(data-language);
+    @apply absolute right-4 top-4 rounded bg-muted px-2 py-1 text-xs font-medium text-muted-foreground;
+  }
+}
