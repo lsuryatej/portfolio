@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { MotionProvider } from '@/components/motion-provider';
 import { Navigation, Footer } from '@/components/site';
 import { ReadingProgressClient } from '@/components/blog/reading-progress-client';
+import { ToastProvider } from '@/components/ui/toast';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Professional Web Developer',
@@ -28,14 +29,16 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <MotionProvider>
-            <ReadingProgressClient />
-            <div className="flex min-h-screen flex-col">
-              <Navigation />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
+            <ToastProvider>
+              <ReadingProgressClient />
+              <div className="flex min-h-screen flex-col">
+                <Navigation />
+                <main className="flex-1">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </ToastProvider>
           </MotionProvider>
         </ThemeProvider>
       </body>
