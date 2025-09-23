@@ -71,11 +71,11 @@ export function TableOfContents({ chapters }: TableOfContentsProps) {
 
   return (
     <FadeIn>
-      <nav className="space-y-1">
+      <nav className="space-y-1" role="navigation" aria-label="Table of contents">
         <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
           Table of Contents
         </h3>
-        <ul className="space-y-2">
+        <ul className="space-y-2" role="list">
           {chapters.map((chapter, index) => (
             <li key={chapter.anchor}>
               <button
@@ -83,11 +83,13 @@ export function TableOfContents({ chapters }: TableOfContentsProps) {
                 className={cn(
                   'block w-full text-left text-sm py-2 px-3 rounded-md transition-all duration-200',
                   'hover:bg-muted hover:text-foreground',
-                  'focus:outline-none focus:ring-2 focus:ring-primary/20',
+                  'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
                   activeSection === chapter.anchor
                     ? 'bg-primary/10 text-primary font-medium border-l-2 border-primary'
                     : 'text-muted-foreground border-l-2 border-transparent'
                 )}
+                aria-current={activeSection === chapter.anchor ? 'location' : undefined}
+                aria-label={`Go to section: ${chapter.title}`}
               >
                 <span className="flex items-center gap-2">
                   <span className="text-xs opacity-60">

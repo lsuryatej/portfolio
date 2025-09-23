@@ -67,7 +67,7 @@ export function BeforeAfterSlider({
 
   // Handle drag end with subtle snapping to center
   const handleDragEnd = useCallback(
-    (_event: MouseEvent | TouchEvent | PointerEvent, _info: PanInfo) => {
+    () => {
       const currentX = x.get();
       const centerX = containerWidth / 2;
       const snapThreshold = 50;

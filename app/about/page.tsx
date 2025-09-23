@@ -2,11 +2,13 @@ import { Metadata } from 'next';
 import { RiseIn, FadeIn } from '@/lib/motion/primitives';
 import { Timeline, Skills, PressLogos, ResumeDownload } from '@/components/about';
 import { Separator } from '@/components/ui/separator';
+import { generatePageMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageMetadata({
   title: 'About',
   description: 'Learn more about my background, experience, and skills in web development and design.',
-};
+  path: '/about',
+});
 
 export default function AboutPage() {
   return (

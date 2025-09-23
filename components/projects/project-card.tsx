@@ -70,7 +70,11 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
 
   return (
     <RiseIn delay={index * 0.1}>
-      <Link href={project.url} className="block group">
+      <Link 
+        href={project.url} 
+        className="block group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-lg"
+        aria-label={`View ${project.title} project details`}
+      >
         <Card
           ref={cardRef}
           className="overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 border-0 bg-card/50 backdrop-blur-sm"
@@ -83,7 +87,7 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
             {imageLoaded && (
               <Image
                 src={project.coverImage}
-                alt={project.title}
+                alt={`Cover image for ${project.title} project`}
                 fill
                 priority={priority}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -103,7 +107,11 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
             {/* Featured badge */}
             {project.featured && (
               <div className="absolute top-4 left-4">
-                <Badge variant="default" className="bg-primary/90 backdrop-blur-sm">
+                <Badge 
+                  variant="default" 
+                  className="bg-primary/90 backdrop-blur-sm"
+                  aria-label="Featured project"
+                >
                   Featured
                 </Badge>
               </div>
@@ -136,18 +144,24 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
 
           <CardContent className="pt-0">
             {/* Tags */}
-            <div className="flex flex-wrap gap-1.5 mb-3">
+            <div className="flex flex-wrap gap-1.5 mb-3" role="list" aria-label="Project technologies">
               {project.tags?.slice(0, 4).map((tag) => (
                 <Badge
                   key={tag}
                   variant="secondary"
                   className="text-xs px-2 py-0.5 bg-secondary/50 hover:bg-secondary/80 transition-colors"
+                  role="listitem"
                 >
                   {tag}
                 </Badge>
               ))}
               {project.tags && project.tags.length > 4 && (
-                <Badge variant="secondary" className="text-xs px-2 py-0.5 bg-secondary/50">
+                <Badge 
+                  variant="secondary" 
+                  className="text-xs px-2 py-0.5 bg-secondary/50"
+                  role="listitem"
+                  aria-label={`${project.tags.length - 4} more technologies`}
+                >
                   +{project.tags.length - 4}
                 </Badge>
               )}

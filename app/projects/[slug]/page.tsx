@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { allProjects } from 'contentlayer/generated';
 import { ProjectCaseStudy } from '@/components/projects/project-case-study';
-import { generateProjectMetadata } from '@/lib/seo';
+import { generateProjectMetadata, generateCreativeWorkStructuredData } from '@/lib/seo';
+import { StructuredData } from '@/components/seo';
 import { Metadata } from 'next';
 
 interface ProjectPageProps {
@@ -37,5 +38,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  return <ProjectCaseStudy project={project} />;
+  const structuredData = generateCreativeWorkStructuredData(project);
+
+  return (
+    <>
+      <StructuredData data={structuredData} />
+      <ProjectCaseStudy project={project} />
+    </>
+  );
 }

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 
-import { RiseIn, FadeIn } from '@/lib/motion/primitives';
+// import { RiseIn, FadeIn } from '@/lib/motion/primitives';
 import { cn } from '@/lib/utils';
 import { ExternalLink, Info, AlertTriangle, CheckCircle } from 'lucide-react';
 import { CodeBlock } from './code-block';
@@ -30,20 +30,18 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
     const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
     return (
-      <RiseIn>
-        <HeadingTag id={id} className={className} {...props}>
-          {children}
-          {id && (
-            <a
-              href={`#${id}`}
-              className="absolute -left-6 top-0 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
-              aria-label={`Link to ${children}`}
-            >
-              #
-            </a>
-          )}
-        </HeadingTag>
-      </RiseIn>
+      <HeadingTag id={id} className={className} {...props}>
+        {children}
+        {id && (
+          <a
+            href={`#${id}`}
+            className="absolute -left-6 top-0 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-primary"
+            aria-label={`Link to ${children}`}
+          >
+            #
+          </a>
+        )}
+      </HeadingTag>
     );
   };
 
@@ -54,26 +52,24 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
 // Custom image component with enhanced styling
 function CustomImage({ src, alt, ...props }: { src: string; alt: string; width?: number; height?: number }) {
   return (
-    <FadeIn>
-      <figure className="my-8">
-        <div className="relative overflow-hidden rounded-lg bg-muted">
-          <Image
-            src={src}
-            alt={alt}
-            width={800}
-            height={600}
-            className="w-full h-auto"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-            {...props}
-          />
-        </div>
-        {alt && (
-          <figcaption className="mt-2 text-center text-sm text-muted-foreground">
-            {alt}
-          </figcaption>
-        )}
-      </figure>
-    </FadeIn>
+    <figure className="my-8">
+      <div className="relative overflow-hidden rounded-lg bg-muted">
+        <Image
+          src={src}
+          alt={alt}
+          width={800}
+          height={600}
+          className="w-full h-auto"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          {...props}
+        />
+      </div>
+      {alt && (
+        <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+          {alt}
+        </figcaption>
+      )}
+    </figure>
   );
 }
 
@@ -96,18 +92,16 @@ function CustomBlockquote({ children, className }: { children: ReactNode; classN
   }
 
   return (
-    <FadeIn>
-      <Card className={cn('my-6 p-6 border-l-4', variant, className)}>
-        <div className="flex gap-3">
-          <div className="flex-shrink-0 mt-0.5">
-            {icon}
-          </div>
-          <blockquote className="text-lg leading-relaxed [&>p]:m-0">
-            {children}
-          </blockquote>
+    <Card className={cn('my-6 p-6 border-l-4', variant, className)}>
+      <div className="flex gap-3">
+        <div className="flex-shrink-0 mt-0.5">
+          {icon}
         </div>
-      </Card>
-    </FadeIn>
+        <blockquote className="text-lg leading-relaxed [&>p]:m-0">
+          {children}
+        </blockquote>
+      </div>
+    </Card>
   );
 }
 
@@ -129,13 +123,11 @@ function CustomPre({ children, ...props }: { children: ReactNode; className?: st
   
   // Fallback to regular pre
   return (
-    <FadeIn>
-      <div className="my-6 rounded-lg overflow-hidden bg-muted border">
-        <pre className="p-4 overflow-x-auto text-sm leading-relaxed" {...props}>
-          {children}
-        </pre>
-      </div>
-    </FadeIn>
+    <div className="my-6 rounded-lg overflow-hidden bg-muted border">
+      <pre className="p-4 overflow-x-auto text-sm leading-relaxed" {...props}>
+        {children}
+      </pre>
+    </div>
   );
 }
 
@@ -154,32 +146,26 @@ function CustomCode({ children, className }: { children: ReactNode; className?: 
 // Custom paragraph component
 function CustomParagraph({ children }: { children: ReactNode }) {
   return (
-    <RiseIn>
-      <p className="my-6 leading-7 [&:not(:first-child)]:mt-6">
-        {children}
-      </p>
-    </RiseIn>
+    <p className="my-6 leading-7 [&:not(:first-child)]:mt-6">
+      {children}
+    </p>
   );
 }
 
 // Custom list components
 function CustomUl({ children }: { children: ReactNode }) {
   return (
-    <RiseIn>
-      <ul className="my-6 ml-6 list-disc space-y-2 [&>li]:mt-2">
-        {children}
-      </ul>
-    </RiseIn>
+    <ul className="my-6 ml-6 list-disc space-y-2 [&>li]:mt-2">
+      {children}
+    </ul>
   );
 }
 
 function CustomOl({ children }: { children: ReactNode }) {
   return (
-    <RiseIn>
-      <ol className="my-6 ml-6 list-decimal space-y-2 [&>li]:mt-2">
-        {children}
-      </ol>
-    </RiseIn>
+    <ol className="my-6 ml-6 list-decimal space-y-2 [&>li]:mt-2">
+      {children}
+    </ol>
   );
 }
 
@@ -194,13 +180,11 @@ function CustomLi({ children }: { children: ReactNode }) {
 // Custom table components
 function CustomTable({ children }: { children: ReactNode }) {
   return (
-    <FadeIn>
-      <div className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse border border-border rounded-lg">
-          {children}
-        </table>
-      </div>
-    </FadeIn>
+    <div className="my-6 overflow-x-auto">
+      <table className="w-full border-collapse border border-border rounded-lg">
+        {children}
+      </table>
+    </div>
   );
 }
 
@@ -254,9 +238,7 @@ function CustomLink({ href, children, ...props }: { href: string; children: Reac
 // Custom horizontal rule
 function CustomHr() {
   return (
-    <FadeIn>
-      <hr className="my-8 border-border" />
-    </FadeIn>
+    <hr className="my-8 border-border" />
   );
 }
 

@@ -33,7 +33,7 @@ const footerLinks = [
       { name: "Home", href: "/" },
       { name: "Projects", href: "/projects" },
       { name: "About", href: "/about" },
-      { name: "Blog", href: "/blog" },
+      // { name: "Blog", href: "/blog" }, // Coming soon
       { name: "Contact", href: "/contact" },
     ],
   },
@@ -48,14 +48,15 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
+    <footer id="footer" className="border-t bg-background" role="contentinfo">
       <div className="container mx-auto px-4 py-12">
         <div className="grid gap-8 md:grid-cols-4">
           {/* Brand and Description */}
           <div className="md:col-span-2">
             <Link
               href="/"
-              className="text-xl font-semibold tracking-tight mb-4 block"
+              className="text-xl font-semibold tracking-tight mb-4 block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md"
+              aria-label="Portfolio - Go to homepage"
             >
               Portfolio
             </Link>
@@ -65,7 +66,7 @@ export function Footer() {
             </p>
             
             {/* Social Links */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2" role="list" aria-label="Social media links">
               {socialLinks.map((social) => (
                 <Button
                   key={social.name}
@@ -73,14 +74,15 @@ export function Footer() {
                   size="icon"
                   asChild
                   className="hover:bg-muted"
+                  role="listitem"
                 >
                   <Link
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.name}
+                    aria-label={`Visit ${social.name} profile (opens in new tab)`}
                   >
-                    <social.icon className="h-4 w-4" />
+                    <social.icon className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </Button>
               ))}
@@ -89,21 +91,23 @@ export function Footer() {
 
           {/* Footer Links */}
           {footerLinks.map((section) => (
-            <div key={section.title}>
-              <h3 className="font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
+            <nav key={section.title} aria-labelledby={`footer-${section.title.toLowerCase()}`}>
+              <h3 id={`footer-${section.title.toLowerCase()}`} className="font-semibold mb-4">
+                {section.title}
+              </h3>
+              <ul className="space-y-2" role="list">
                 {section.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.href} role="listitem">
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md"
                     >
                       {link.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
 
@@ -121,7 +125,9 @@ export function Footer() {
               Available for new opportunities
             </p>
             <Button asChild size="sm">
-              <Link href="/contact">Get in touch</Link>
+              <Link href="/contact" aria-label="Contact me about new opportunities">
+                Get in touch
+              </Link>
             </Button>
           </div>
         </div>

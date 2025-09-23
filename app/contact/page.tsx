@@ -1,6 +1,14 @@
 import { ContactForm } from '@/components/contact/contact-form'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Mail, MapPin, Clock } from 'lucide-react'
+import { Metadata } from 'next'
+import { generatePageMetadata } from '@/lib/seo'
+
+export const metadata: Metadata = generatePageMetadata({
+  title: 'Contact',
+  description: 'Get in touch to discuss your next project. Available for freelance work and collaborations.',
+  path: '/contact',
+})
 
 export default function ContactPage() {
   return (

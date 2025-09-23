@@ -1,8 +1,6 @@
-'use client';
-
 import { Post } from 'contentlayer/generated'
 import { format } from 'date-fns'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+import { getMDXComponent } from 'next-contentlayer/hooks'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
@@ -15,7 +13,7 @@ interface BlogPostContentProps {
 }
 
 export function BlogPostContent({ post }: BlogPostContentProps) {
-  const MDXContent = useMDXComponent(post.body.code)
+  const MDXContent = getMDXComponent(post.body.code)
 
   return (
     <article className="container mx-auto px-4 py-12">

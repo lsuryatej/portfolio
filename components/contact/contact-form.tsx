@@ -154,9 +154,14 @@ export function ContactForm() {
             onBlur={handleBlur}
             className={cn(errors.name && 'border-red-500 focus-visible:ring-red-500')}
             placeholder="Your full name"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? 'name-error' : undefined}
           />
+          {errors.name && <div id="name-error" className="sr-only">{errors.name}</div>}
           {errors.name && (
-            <p className="text-sm text-red-500">{errors.name}</p>
+            <p className="text-sm text-red-500" role="alert" aria-live="polite">
+              {errors.name}
+            </p>
           )}
         </div>
 
@@ -174,9 +179,14 @@ export function ContactForm() {
             onBlur={handleBlur}
             className={cn(errors.email && 'border-red-500 focus-visible:ring-red-500')}
             placeholder="your.email@example.com"
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? 'email-error' : undefined}
           />
+          {errors.email && <div id="email-error" className="sr-only">{errors.email}</div>}
           {errors.email && (
-            <p className="text-sm text-red-500">{errors.email}</p>
+            <p className="text-sm text-red-500" role="alert" aria-live="polite">
+              {errors.email}
+            </p>
           )}
         </div>
       </div>
@@ -192,9 +202,14 @@ export function ContactForm() {
           onBlur={handleBlur}
           className={cn(errors.subject && 'border-red-500 focus-visible:ring-red-500')}
           placeholder="What's this about?"
+          aria-invalid={!!errors.subject}
+          aria-describedby={errors.subject ? 'subject-error' : undefined}
         />
+        {errors.subject && <div id="subject-error" className="sr-only">{errors.subject}</div>}
         {errors.subject && (
-          <p className="text-sm text-red-500">{errors.subject}</p>
+          <p className="text-sm text-red-500" role="alert" aria-live="polite">
+            {errors.subject}
+          </p>
         )}
       </div>
 
@@ -212,11 +227,16 @@ export function ContactForm() {
           onBlur={handleBlur}
           className={cn(errors.message && 'border-red-500 focus-visible:ring-red-500')}
           placeholder="Tell me about your project, question, or just say hello..."
+          aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? 'message-error' : 'message-count'}
         />
+        {errors.message && <div id="message-error" className="sr-only">{errors.message}</div>}
         {errors.message && (
-          <p className="text-sm text-red-500">{errors.message}</p>
+          <p className="text-sm text-red-500" role="alert" aria-live="polite">
+            {errors.message}
+          </p>
         )}
-        <p className="text-sm text-muted-foreground">
+        <p id="message-count" className="text-sm text-muted-foreground" aria-live="polite">
           {formData.message.length}/2000 characters
         </p>
       </div>

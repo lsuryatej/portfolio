@@ -1,8 +1,9 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, forwardRef, useEffect, useState } from 'react';
 import { motionTokens } from './tokens';
+import { prefersReducedMotion } from '../accessibility';
 
 // Base animation variants
 const fadeInVariants: Variants = {
@@ -95,6 +96,23 @@ const slideInVariants = {
   },
 };
 
+// Hook to check for reduced motion preference
+const useReducedMotion = () => {
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(false);
+
+  useEffect(() => {
+    setShouldReduceMotion(prefersReducedMotion());
+    
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const handleChange = () => setShouldReduceMotion(mediaQuery.matches);
+    
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  return shouldReduceMotion;
+};
+
 // Component interfaces
 interface BaseMotionProps {
   children: ReactNode;
@@ -111,7 +129,9 @@ interface SlideInProps extends BaseMotionProps {
 // FadeIn Component
 export const FadeIn = forwardRef<HTMLDivElement, BaseMotionProps>(
   ({ children, delay = 0, duration, className, disabled = false }, ref) => {
-    if (disabled) {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
       return <div ref={ref} className={className}>{children}</div>;
     }
 
@@ -147,7 +167,9 @@ FadeIn.displayName = 'FadeIn';
 // RiseIn Component
 export const RiseIn = forwardRef<HTMLDivElement, BaseMotionProps>(
   ({ children, delay = 0, duration, className, disabled = false }, ref) => {
-    if (disabled) {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
       return <div ref={ref} className={className}>{children}</div>;
     }
 
@@ -184,7 +206,9 @@ RiseIn.displayName = 'RiseIn';
 // ScaleIn Component
 export const ScaleIn = forwardRef<HTMLDivElement, BaseMotionProps>(
   ({ children, delay = 0, duration, className, disabled = false }, ref) => {
-    if (disabled) {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
       return <div ref={ref} className={className}>{children}</div>;
     }
 
@@ -221,7 +245,9 @@ ScaleIn.displayName = 'ScaleIn';
 // SlideIn Component
 export const SlideIn = forwardRef<HTMLDivElement, SlideInProps>(
   ({ children, direction = 'up', delay = 0, duration, className, disabled = false }, ref) => {
-    if (disabled) {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
       return <div ref={ref} className={className}>{children}</div>;
     }
 
@@ -264,7 +290,9 @@ interface StaggerChildrenProps {
 
 export const StaggerChildren = forwardRef<HTMLDivElement, StaggerChildrenProps>(
   ({ children, stagger = motionTokens.reveal.stagger, className, disabled = false }, ref) => {
-    if (disabled) {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
       return <div ref={ref} className={className}>{children}</div>;
     }
 
@@ -304,7 +332,9 @@ interface MagneticProps {
 
 export const Magnetic = forwardRef<HTMLDivElement, MagneticProps>(
   ({ children, strength = motionTokens.magnetic.strength, className, disabled = false }, ref) => {
-    if (disabled) {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
       return <div ref={ref} className={className}>{children}</div>;
     }
 
