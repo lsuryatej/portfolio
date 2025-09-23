@@ -49,7 +49,7 @@
   - Set up lazy loading for project thumbnails with intersection observer
   - _Requirements: 2.1, 2.2, 2.3, 2.5_
 
-- [ ] 8. Develop project case study pages
+- [x] 8. Develop project case study pages
   - Create dynamic project page layout with MDX rendering
   - Build sticky table of contents with scroll-linked highlighting
   - Implement scroll progress bar tied to reading position

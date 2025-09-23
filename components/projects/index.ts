@@ -1,3 +1,11 @@
 export { ProjectCard } from './project-card';
 export { ProjectFilterBar } from './project-filter-bar';
 export { ProjectGrid } from './project-grid';
+export { ProjectCaseStudy } from './project-case-study';
+export { TableOfContents } from './table-of-contents';
+export { ScrollProgress } from './scroll-progress';
+export { MediaGallery } from './media-gallery';
+export { ProjectHeader } from './project-header';
+export { ProjectMeta } from './project-meta';
+export { MDXComponents } from './mdx-components';
+export { ProjectMDXContent } from './project-mdx-content';
