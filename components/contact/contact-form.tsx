@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Button } from '@/components/ui/button'
+import { MagneticButton } from '@/components/ui/magnetic-button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
@@ -18,7 +18,9 @@ export function ContactForm() {
   const [formData, setFormData] = React.useState<ContactFormData>(contactFormDefaults as ContactFormData)
   const [errors, setErrors] = React.useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [isSuccess, setIsSuccess] = React.useState(false)
   const { addToast } = useToast()
+  const formRef = React.useRef<HTMLFormElement>(null)
 
   const validateField = (name: string, value: string) => {
     try {
@@ -84,15 +86,19 @@ export function ContactForm() {
       const result = await response.json()
 
       if (response.ok) {
+        setIsSuccess(true);
         addToast({
           type: 'success',
           title: 'Message sent!',
           description: 'Thank you for your message. I\'ll get back to you soon.'
         })
         
-        // Reset form
-        setFormData(contactFormDefaults as ContactFormData)
-        setErrors({})
+        // Reset form with animation
+        setTimeout(() => {
+          setFormData(contactFormDefaults as ContactFormData)
+          setErrors({})
+          setIsSuccess(false);
+        }, 2000);
       } else {
         addToast({
           type: 'error',
@@ -124,7 +130,14 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form 
+      ref={formRef}
+      onSubmit={handleSubmit} 
+      className={cn(
+        "space-y-6 transition-all duration-500",
+        isSuccess && "scale-[0.98] opacity-80"
+      )}
+    >
       {/* Honeypot field - hidden from users */}
       <div className="hidden">
         <Label htmlFor="website">Website</Label>
@@ -241,9 +254,12 @@ export function ContactForm() {
         </p>
       </div>
 
-      <Button
+      <MagneticButton
         type="submit"
         disabled={isSubmitting}
+        variant="primary"
+        size="lg"
+        strength={0.3}
         className="w-full sm:w-auto"
       >
         {isSubmitting ? (
@@ -257,7 +273,7 @@ export function ContactForm() {
             Send Message
           </>
         )}
-      </Button>
+      </MagneticButton>
     </form>
   )
 }

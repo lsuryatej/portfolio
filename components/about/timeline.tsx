@@ -1,6 +1,7 @@
 'use client';
 
 // Timeline component with scroll-triggered animations
+import * as React from 'react';
 import { RiseIn, StaggerChildren } from '@/lib/motion/primitives';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -70,22 +71,53 @@ const typeLabels = {
 };
 
 export function Timeline({ items = timelineData }: TimelineProps) {
+  const timelineRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const initTimelineAnimations = async () => {
+      try {
+        const { createScrollAnimation } = await import('@/lib/motion');
+
+        // Animate the timeline line
+        createScrollAnimation('.timeline-line', {
+          scaleY: 1,
+          transformOrigin: 'top center',
+        }, {
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 1,
+        });
+
+        console.log('📅 Timeline animations initialized');
+      } catch (error) {
+        console.warn('Failed to initialize timeline animations:', error);
+      }
+    };
+
+    initTimelineAnimations();
+  }, []);
+
   return (
-    <div className="relative">
-      {/* Timeline line */}
-      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border md:left-8" />
-      
+    <div ref={timelineRef} className="relative">
+      {/* Animated Timeline line */}
+      <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border/30 md:left-8">
+        <div className="timeline-line absolute inset-0 w-full bg-gradient-to-b from-primary via-primary to-primary/50 origin-top scale-y-0" />
+      </div>
+
       <StaggerChildren className="space-y-8">
         {items.map((item, index) => (
-          <RiseIn key={item.id} delay={index * 0.1}>
+          <RiseIn key={item.id} delay={index * 0.15}>
             <div className="relative flex items-start gap-6 md:gap-8">
-              {/* Timeline dot */}
+              {/* Enhanced Timeline dot with pulse animation */}
               <div className="relative z-10 flex-shrink-0">
-                <div className={`w-8 h-8 rounded-full ${typeColors[item.type]} flex items-center justify-center`}>
+                <div className={`w-8 h-8 rounded-full ${typeColors[item.type]} flex items-center justify-center relative`}>
                   <div className="w-3 h-3 bg-white rounded-full" />
+                  {/* Pulse ring */}
+                  <div className={`absolute inset-0 rounded-full ${typeColors[item.type]} animate-ping opacity-20`} />
+                  <div className={`absolute inset-[-4px] rounded-full ${typeColors[item.type]} opacity-10 animate-pulse`} />
                 </div>
               </div>
-              
+
               {/* Content */}
               <Card className="flex-1 hover:shadow-lg transition-shadow duration-300">
                 <CardContent className="p-6">
@@ -99,11 +131,11 @@ export function Timeline({ items = timelineData }: TimelineProps) {
                       </span>
                     </div>
                   </div>
-                  
+
                   <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
                   <p className="text-sm text-muted-foreground mb-3">{item.company}</p>
-                  <p className="text-sm leading-relaxed mb-4">{item.description}</p>
-                  
+                  <p className="text-sm leading-relaxed mb-4 text-pretty">{item.description}</p>
+
                   {item.technologies && (
                     <div className="flex flex-wrap gap-2">
                       {item.technologies.map((tech) => (

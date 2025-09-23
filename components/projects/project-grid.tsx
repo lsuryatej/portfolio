@@ -44,38 +44,62 @@ export function ProjectGrid({ projects, activeFilters }: ProjectGridProps) {
       <AnimatePresence mode="wait">
         <motion.div
           key={`${activeFilters.join('-')}-${sortedProjects.length}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ 
+            duration: 0.5,
+            ease: [0.23, 1, 0.320, 1]
+          }}
         >
-          <StaggerChildren stagger={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max">
-              <AnimatePresence mode="popLayout">
-                {sortedProjects.map((project, index) => (
-                  <motion.div
-                    key={project.slug}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: index * 0.05,
-                      layout: { duration: 0.3 }
-                    }}
-                    className="w-full"
-                  >
-                    <ProjectCard
-                      project={project}
-                      priority={index < 3}
-                      index={index}
-                    />
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </div>
-          </StaggerChildren>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max">
+            <AnimatePresence mode="popLayout">
+              {sortedProjects.map((project, index) => (
+                <motion.div
+                  key={project.slug}
+                  layout
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.8,
+                    y: 60,
+                    rotateX: -15
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: 1,
+                    y: 0,
+                    rotateX: 0
+                  }}
+                  exit={{ 
+                    opacity: 0, 
+                    scale: 0.8,
+                    y: -60,
+                    rotateX: 15
+                  }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.08,
+                    ease: [0.23, 1, 0.320, 1],
+                    layout: { 
+                      duration: 0.4,
+                      ease: [0.23, 1, 0.320, 1]
+                    }
+                  }}
+                  className="w-full"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    perspective: '1000px'
+                  }}
+                >
+                  <ProjectCard
+                    project={project}
+                    priority={index < 3}
+                    index={index}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
         </motion.div>
       </AnimatePresence>
 

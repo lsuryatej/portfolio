@@ -1,24 +1,33 @@
 import { Inter, JetBrains_Mono, Playfair_Display } from 'next/font/google'
 
-// Sans-serif font for body text
+// Sans-serif font for body text - preload critical weights
 export const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 })
 
-// Monospace font for code
+// Monospace font for code - only load when needed
 export const fontMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
   display: 'swap',
+  weight: ['400', '500'],
+  preload: false, // Only load when code blocks are present
+  fallback: ['ui-monospace', 'monospace'],
 })
 
-// Display font for headings
+// Display font for headings - preload for hero section
 export const fontDisplay = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
+  weight: ['400', '600', '700'],
+  preload: true,
+  fallback: ['serif'],
 })
 
 // Typography scale configuration

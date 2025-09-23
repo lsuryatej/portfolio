@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { RiseIn } from '@/lib/motion/primitives';
@@ -17,7 +17,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, priority = false, index = 0 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const [, setImageLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Intersection Observer for lazy loading
@@ -41,7 +41,7 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
     return () => observer.disconnect();
   }, []);
 
-  // Mouse move handler for tilt effect
+  // Enhanced mouse move handler for premium tilt effect
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
 
@@ -51,21 +51,47 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
-
+    // Calculate rotation with more sophisticated easing
+    const rotateX = (y - centerY) / 8;
+    const rotateY = (centerX - x) / 8;
+    
+    // Add subtle scale and glow effects
+    const distance = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+    const maxDistance = Math.sqrt(Math.pow(centerX, 2) + Math.pow(centerY, 2));
+    const intensity = 1 - (distance / maxDistance);
+    
     cardRef.current.style.transform = `
       perspective(1000px) 
       rotateX(${rotateX}deg) 
       rotateY(${rotateY}deg) 
-      translateZ(20px)
+      translateZ(${20 + intensity * 10}px)
+      scale(${1 + intensity * 0.02})
     `;
+    
+    // Add dynamic shadow based on tilt
+    const shadowX = rotateY * 0.5;
+    const shadowY = rotateX * 0.5;
+    cardRef.current.style.boxShadow = `
+      ${shadowX}px ${shadowY + 10}px ${30 + intensity * 20}px rgba(0, 0, 0, 0.1),
+      ${shadowX * 0.5}px ${shadowY * 0.5 + 5}px ${15 + intensity * 10}px rgba(0, 0, 0, 0.05)
+    `;
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (cardRef.current) {
+      cardRef.current.style.transition = 'none';
+    }
   };
 
   const handleMouseLeave = () => {
     if (!cardRef.current) return;
-    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
-    setIsHovered(false);
+    
+    cardRef.current.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.320, 1)';
+    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)';
+    cardRef.current.style.boxShadow = '';
+    
+    setTimeout(() => setIsHovered(false), 100);
   };
 
   return (
@@ -77,32 +103,30 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
       >
         <Card
           ref={cardRef}
-          className="overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 border-0 bg-card/50 backdrop-blur-sm"
+          className="overflow-hidden border-0 bg-card/50 backdrop-blur-sm cursor-pointer group-hover:shadow-2xl group-hover:shadow-primary/10"
           onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovered(true)}
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          style={{ 
+            transformStyle: 'preserve-3d',
+            willChange: 'transform',
+          }}
         >
           {/* Image Container */}
           <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-            {imageLoaded && (
-              <Image
-                src={project.coverImage}
-                alt={`Cover image for ${project.title} project`}
-                fill
-                priority={priority}
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                onError={() => {
-                  // Fallback for missing images
-                  console.warn(`Image not found: ${project.coverImage}`);
-                }}
-              />
-            )}
-            
-            {/* Loading placeholder */}
-            {!imageLoaded && (
-              <div className="absolute inset-0 bg-gradient-to-br from-muted to-muted/50 animate-pulse" />
-            )}
+            <OptimizedImage
+              src={project.coverImage}
+              alt={`Cover image for ${project.title} project`}
+              fill
+              priority={priority}
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              onLoad={() => setImageLoaded(true)}
+              onError={() => {
+                console.warn(`Image not found: ${project.coverImage}`);
+                setImageLoaded(true);
+              }}
+            />
 
             {/* Featured badge */}
             {project.featured && (
@@ -137,7 +161,7 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
                 </span>
               )}
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 text-pretty">
               {project.summary}
             </p>
           </CardHeader>

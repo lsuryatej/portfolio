@@ -41,9 +41,8 @@ export default function ProjectsPageClient() {
             </h1>
           </FadeIn>
           <RiseIn delay={0.1}>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A collection of projects showcasing modern web development, 
-              user experience design, and technical innovation.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto description-text">
+              A collection of projects showcasing modern web development, user experience design, and technical innovation.
             </p>
           </RiseIn>
         </div>

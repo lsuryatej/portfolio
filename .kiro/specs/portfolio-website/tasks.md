@@ -112,7 +112,7 @@
   - Create focus management system for modal and navigation components
   - _Requirements: 7.1, 7.2, 7.3_
 
-- [ ] 17. Optimize performance and Core Web Vitals
+- [x] 17. Optimize performance and Core Web Vitals
   - Implement code splitting for animation libraries and heavy components
   - Add image optimization with next/image and proper loading strategies
   - Set up preloading for critical assets and fonts
@@ -126,7 +126,7 @@
   - Implement reduced motion testing and animation performance monitoring
   - _Requirements: 8.1, 7.3_
 
-- [ ] 19. Build styleguide and documentation
+- [x] 19. Build styleguide and documentation
   - Create styleguide page showcasing all components and motion tokens
   - Write comprehensive README with setup, development, and deployment instructions
   - Create README_motion.md documenting animation system and best practices

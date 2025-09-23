@@ -7,7 +7,10 @@ import { Navigation, Footer } from '@/components/site';
 import { ReadingProgressClient } from '@/components/blog/reading-progress-client';
 import { ToastProvider } from '@/components/ui/toast';
 import { SkipLinks } from '@/components/ui/skip-links';
+import { BackToTop } from '@/components/projects/back-to-top';
 import { generatePageMetadata, generatePersonStructuredData } from '@/lib/seo';
+// import { PreloadScript } from '@/components/preload-script';
+// import { PerformanceMonitor } from '@/components/performance-monitor';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio.example.com';
 
@@ -47,12 +50,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Resource hints for better loading performance */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//images.unsplash.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(personStructuredData),
           }}
         />
+        
+        {/* Preload critical resources */}
+        {/* <PreloadScript /> */}
       </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} ${fontDisplay.variable} antialiased`}
@@ -67,6 +79,8 @@ export default function RootLayout({
             <ToastProvider>
               <SkipLinks />
               <ReadingProgressClient />
+              <BackToTop />
+              {/* <PerformanceMonitor /> */}
               <div className="flex min-h-screen flex-col">
                 <Navigation />
                 <main id="main-content" className="flex-1" role="main">

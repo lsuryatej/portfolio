@@ -42,36 +42,90 @@ interface SkillBarProps {
 
 function SkillBar({ skill, delay }: SkillBarProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
   const [animatedLevel, setAnimatedLevel] = useState(0);
+  const [displayLevel, setDisplayLevel] = useState(0);
 
   useEffect(() => {
     if (isInView) {
       const timer = setTimeout(() => {
-        setAnimatedLevel(skill.level);
+        // Animate the number counting up
+        const duration = 1200;
+        const startTime = Date.now();
+        const startLevel = 0;
+        const endLevel = skill.level;
+        
+        const animate = () => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Use easing function for smooth animation
+          const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+          const currentLevel = startLevel + (endLevel - startLevel) * easeOutCubic;
+          
+          setDisplayLevel(Math.round(currentLevel));
+          setAnimatedLevel(currentLevel);
+          
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+        
+        requestAnimationFrame(animate);
       }, delay * 100);
+      
       return () => clearTimeout(timer);
     }
     return undefined;
   }, [isInView, skill.level, delay]);
 
   return (
-    <div ref={ref} className="space-y-2">
+    <div ref={ref} className="space-y-3">
       <div className="flex justify-between items-center">
         <span className="text-sm font-medium">{skill.name}</span>
-        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+        <motion.span 
+          className="text-xs text-muted-foreground font-mono"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ delay: delay * 0.1 + 0.5 }}
+        >
+          {displayLevel}%
+        </motion.span>
       </div>
-      <div className="h-2 bg-secondary rounded-full overflow-hidden">
+      <div className="relative h-2 bg-secondary rounded-full overflow-hidden">
+        {/* Background glow effect */}
         <motion.div
-          className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full"
+          className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-600/20 rounded-full"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ delay: delay * 0.1 }}
+        />
+        
+        {/* Main progress bar */}
+        <motion.div
+          ref={progressRef}
+          className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full relative overflow-hidden"
           initial={{ width: 0 }}
           animate={{ width: isInView ? `${animatedLevel}%` : 0 }}
           transition={{
             duration: 1.2,
             delay: delay * 0.1,
-            ease: [0.4, 0, 0.2, 1]
+            ease: [0.23, 1, 0.320, 1]
           }}
-        />
+        >
+          {/* Shimmer effect */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            initial={{ x: '-100%' }}
+            animate={{ x: isInView ? '200%' : '-100%' }}
+            transition={{
+              duration: 1.5,
+              delay: delay * 0.1 + 0.3,
+              ease: 'easeInOut'
+            }}
+          />
+        </motion.div>
       </div>
     </div>
   );

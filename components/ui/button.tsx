@@ -19,6 +19,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -38,10 +39,21 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
+  magnetic?: boolean
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, magnetic = false, ...props }, ref) => {
+    if (magnetic) {
+      return (
+        <button
+          ref={ref}
+          className={cn(buttonVariants({ variant, size, className }), "magnetic-button")}
+          {...props}
+        />
+      )
+    }
+
     const Comp = asChild ? Slot : "button"
     return (
       <Comp

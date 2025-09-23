@@ -16,7 +16,7 @@ export default function ContactPage() {
       <div className="mx-auto max-w-4xl">
         <div className="mb-12 text-center">
           <h1 className="mb-4 text-4xl font-bold tracking-tight">Get in Touch</h1>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground hero-text">
             Have a project in mind? Let&apos;s discuss how we can work together.
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function ContactPage() {
           <Card>
             <CardHeader>
               <CardTitle>Send a Message</CardTitle>
-              <CardDescription>
+              <CardDescription className="text-pretty">
                 Fill out the form below and I&apos;ll get back to you as soon as possible.
               </CardDescription>
             </CardHeader>
@@ -45,7 +45,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-pretty">
                   Prefer email? Drop me a line directly at:
                 </p>
                 <a 
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground text-pretty">
                   I typically respond to messages within 24-48 hours during business days.
                 </p>
               </CardContent>

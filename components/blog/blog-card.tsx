@@ -1,7 +1,7 @@
 import { Post } from 'contentlayer/generated'
 import { format } from 'date-fns'
-import Image from 'next/image'
 import Link from 'next/link'
+import { OptimizedImage } from '@/components/ui/optimized-image'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Clock, Calendar } from 'lucide-react'
@@ -16,7 +16,7 @@ export function BlogCard({ post }: BlogCardProps) {
         <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           {post.coverImage && (
             <div className="relative aspect-[16/9] overflow-hidden">
-              <Image
+              <OptimizedImage
                 src={post.coverImage}
                 alt={post.title}
                 fill

@@ -22,10 +22,8 @@ export default function AboutPage() {
             </h1>
           </RiseIn>
           <FadeIn delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              I&apos;m a passionate frontend developer with a love for creating beautiful, 
-              performant web experiences. With expertise in modern technologies and 
-              a keen eye for design, I bring ideas to life through code.
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto hero-text">
+              I&apos;m a passionate frontend developer with a love for creating beautiful, performant web experiences. With expertise in modern technologies and a keen eye for design, I bring ideas to life through code.
             </p>
           </FadeIn>
         </div>
@@ -37,9 +35,8 @@ export default function AboutPage() {
           <RiseIn>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">My Journey</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                A timeline of my professional experience, education, and key milestones 
-                that have shaped my career in web development.
+              <p className="text-muted-foreground max-w-2xl mx-auto description-text">
+                A timeline of my professional experience, education, and key milestones that have shaped my career in web development.
               </p>
             </div>
           </RiseIn>
@@ -55,7 +52,7 @@ export default function AboutPage() {
           <RiseIn>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">Skills & Expertise</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto description-text">
                 Technologies and tools I work with to create exceptional digital experiences.
               </p>
             </div>
