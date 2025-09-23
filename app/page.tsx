@@ -160,8 +160,20 @@ export default function Home() {
           </h1>
           
           <RiseIn delay={1.5}>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-              Crafting exceptional digital experiences through innovative design, 
+            <p
+              className="
+                text-xl 
+                text-muted-foreground 
+                max-w-xl   /* a bit narrower than 2xl for better line breaks */
+                mx-auto 
+                mb-12 
+                leading-relaxed 
+                text-center  /* centers the text nicely */
+                break-normal /* prevents weird word-breaking */
+                whitespace-normal /* ensures normal wrapping */
+              "
+            >
+              Crafting exceptional digital experiences through innovative design,
               cutting-edge technology, and meticulous attention to detail.
             </p>
           </RiseIn>

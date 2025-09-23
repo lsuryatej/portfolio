@@ -12,12 +12,6 @@ interface ProjectGridProps {
 }
 
 export function ProjectGrid({ projects, activeFilters }: ProjectGridProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Filter projects based on active filters
   const filteredProjects = useMemo(() => {
     if (activeFilters.length === 0) {
@@ -44,19 +38,6 @@ export function ProjectGrid({ projects, activeFilters }: ProjectGridProps) {
       return yearB - yearA;
     });
   }, [filteredProjects]);
-
-  if (!mounted) {
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <div
-            key={i}
-            className="aspect-[4/5] bg-muted animate-pulse rounded-xl"
-          />
-        ))}
-      </div>
-    );
-  }
 
   return (
     <div className="relative">
