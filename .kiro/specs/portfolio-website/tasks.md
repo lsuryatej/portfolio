@@ -34,7 +34,7 @@
   - Set up Lenis smooth scrolling with reduced motion detection
   - Create base GSAP utilities and ScrollTrigger helpers
   - _Requirements: 1.2, 1.6, 7.3_
-
+  
 - [x] 6. Create home page with hero animations
   - Build hero section with multi-layer parallax background
   - Implement animated headline with kerning effects using GSAP
@@ -42,7 +42,7 @@
   - Create scroll-triggered section reveals with staggered animations
   - _Requirements: 1.3, 1.4, 1.5_
 
-- [ ] 7. Build projects listing page with filtering
+- [x] 7. Build projects listing page with filtering
   - Create project grid layout with masonry positioning
   - Implement tag-based filtering with smooth animations
   - Add project card hover effects with tilt and depth shadows
