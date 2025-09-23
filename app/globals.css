@@ -273,4 +273,32 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
   }
+  
+  /* 3D perspective for hero animations */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Cursor styles for magnetic elements */
+  .magnetic-cursor {
+    cursor: pointer;
+  }
+  
+  /* Prevent text selection on animated elements */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Ensure smooth transforms */
+  .char {
+    will-change: transform, opacity;
+  }
 }

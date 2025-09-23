@@ -35,7 +35,7 @@
   - Create base GSAP utilities and ScrollTrigger helpers
   - _Requirements: 1.2, 1.6, 7.3_
 
-- [ ] 6. Create home page with hero animations
+- [x] 6. Create home page with hero animations
   - Build hero section with multi-layer parallax background
   - Implement animated headline with kerning effects using GSAP
   - Add magnetic cursor effect for interactive elements on desktop
