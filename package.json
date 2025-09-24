@@ -15,7 +15,8 @@
     "contentlayer": "contentlayer build",
     "bundle:analyze": "npx @next/bundle-analyzer",
     "perf:audit": "npx lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json",
-    "perf:verify": "node scripts/verify-performance.js"
+    "perf:verify": "node scripts/verify-performance.js",
+    "launch-tracker": "node scripts/launch-tracker.js"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.4.0",

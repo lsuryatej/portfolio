@@ -1,0 +1,348 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2024-01-01T00:00:00.000Z",
+  "totalTasks": 47,
+  "completedTasks": 0,
+  "tasks": {
+    "content": {
+      "name": "Content & Copy",
+      "tasks": {
+        "name-branding": {
+          "title": "Name & Branding - Update \"Portfolio\" to your actual name/brand in navigation and footer",
+          "completed": false,
+          "category": "Personal Information"
+        },
+        "professional-title": {
+          "title": "Professional Title - Change \"Creative Developer\" to your actual role",
+          "completed": false,
+          "category": "Personal Information"
+        },
+        "bio-about": {
+          "title": "Bio & About Section - Replace placeholder bio with your personal story",
+          "completed": false,
+          "category": "Personal Information"
+        },
+        "contact-email": {
+          "title": "Contact Email - Update \"hello@example.com\" to your real email address",
+          "completed": false,
+          "category": "Personal Information"
+        },
+        "location": {
+          "title": "Location - Replace \"[Your Location]\" with your actual location",
+          "completed": false,
+          "category": "Personal Information"
+        },
+        "phone-number": {
+          "title": "Phone Number - Add your contact number (currently placeholder)",
+          "completed": false,
+          "category": "Personal Information"
+        },
+        "work-experience": {
+          "title": "Work Experience - Replace demo timeline data with your actual work history",
+          "completed": false,
+          "category": "Experience & Timeline"
+        },
+        "education": {
+          "title": "Education - Update education information in timeline component",
+          "completed": false,
+          "category": "Experience & Timeline"
+        },
+        "skills": {
+          "title": "Skills - Customize skills list to match your expertise",
+          "completed": false,
+          "category": "Experience & Timeline"
+        },
+        "certifications": {
+          "title": "Certifications - Add your actual certifications and remove demo ones",
+          "completed": false,
+          "category": "Experience & Timeline"
+        },
+        "project-content": {
+          "title": "Project Content - Replace demo projects with your work",
+          "completed": false,
+          "category": "Projects & Portfolio"
+        },
+        "project-images": {
+          "title": "Project Images - Replace Unsplash placeholder images with actual project screenshots",
+          "completed": false,
+          "category": "Projects & Portfolio"
+        },
+        "project-descriptions": {
+          "title": "Project Descriptions - Write compelling case studies for your projects",
+          "completed": false,
+          "category": "Projects & Portfolio"
+        },
+        "project-tags": {
+          "title": "Project Tags - Update technology tags to match your projects",
+          "completed": false,
+          "category": "Projects & Portfolio"
+        },
+        "featured-projects": {
+          "title": "Featured Projects - Mark your best projects as featured",
+          "completed": false,
+          "category": "Projects & Portfolio"
+        },
+        "github-url": {
+          "title": "GitHub URL - Update GitHub link in footer and SEO",
+          "completed": false,
+          "category": "Social & Professional Links"
+        },
+        "linkedin-url": {
+          "title": "LinkedIn URL - Update LinkedIn profile link",
+          "completed": false,
+          "category": "Social & Professional Links"
+        },
+        "twitter-handle": {
+          "title": "Twitter Handle - Update Twitter/X handle",
+          "completed": false,
+          "category": "Social & Professional Links"
+        },
+        "social-media": {
+          "title": "Social Media Links - Add/update all social media profiles",
+          "completed": false,
+          "category": "Social & Professional Links"
+        }
+      }
+    },
+    "design": {
+      "name": "Design & Branding",
+      "tasks": {
+        "logo-brand": {
+          "title": "Logo/Brand - Replace \"Portfolio\" text with your logo or brand name",
+          "completed": false,
+          "category": "Visual Identity"
+        },
+        "favicon": {
+          "title": "Favicon - Add your custom favicon (currently using default)",
+          "completed": false,
+          "category": "Visual Identity"
+        },
+        "profile-picture": {
+          "title": "Profile Picture - Add your professional headshot",
+          "completed": false,
+          "category": "Visual Identity"
+        },
+        "brand-colors": {
+          "title": "Brand Colors - Customize color scheme if desired",
+          "completed": false,
+          "category": "Visual Identity"
+        },
+        "resume-pdf": {
+          "title": "Resume PDF - Replace placeholder resume.pdf with your actual resume",
+          "completed": false,
+          "category": "Images & Media"
+        },
+        "project-screenshots": {
+          "title": "Project Screenshots - Replace all placeholder project images",
+          "completed": false,
+          "category": "Images & Media"
+        },
+        "og-images": {
+          "title": "Open Graph Images - Create custom OG images for social sharing",
+          "completed": false,
+          "category": "Images & Media"
+        },
+        "press-logos": {
+          "title": "Press Logos - Replace demo press logos with actual client/press logos",
+          "completed": false,
+          "category": "Images & Media"
+        }
+      }
+    },
+    "config": {
+      "name": "Configuration & Environment",
+      "tasks": {
+        "site-url": {
+          "title": "NEXT_PUBLIC_SITE_URL - Set your actual domain",
+          "completed": false,
+          "category": "Environment Variables"
+        },
+        "site-name": {
+          "title": "NEXT_PUBLIC_SITE_NAME - Set your name/brand",
+          "completed": false,
+          "category": "Environment Variables"
+        },
+        "contact-email-env": {
+          "title": "NEXT_PUBLIC_CONTACT_EMAIL - Set your email",
+          "completed": false,
+          "category": "Environment Variables"
+        },
+        "google-verification": {
+          "title": "GOOGLE_SITE_VERIFICATION - Add Google Search Console verification",
+          "completed": false,
+          "category": "Environment Variables"
+        },
+        "social-env-vars": {
+          "title": "Social Media URLs - Set all social media environment variables",
+          "completed": false,
+          "category": "Environment Variables"
+        },
+        "site-title": {
+          "title": "Site Title - Update default page titles",
+          "completed": false,
+          "category": "SEO & Meta Data"
+        },
+        "meta-descriptions": {
+          "title": "Meta Descriptions - Write compelling meta descriptions for all pages",
+          "completed": false,
+          "category": "SEO & Meta Data"
+        },
+        "structured-data": {
+          "title": "Structured Data - Update person schema with your information",
+          "completed": false,
+          "category": "SEO & Meta Data"
+        },
+        "sitemap": {
+          "title": "Sitemap - Verify sitemap generates correctly with your content",
+          "completed": false,
+          "category": "SEO & Meta Data"
+        },
+        "robots-txt": {
+          "title": "Robots.txt - Review and update if needed",
+          "completed": false,
+          "category": "SEO & Meta Data"
+        },
+        "google-analytics": {
+          "title": "Google Analytics - Add GA4 tracking ID if desired",
+          "completed": false,
+          "category": "Analytics & Tracking"
+        },
+        "plausible-analytics": {
+          "title": "Plausible Analytics - Set up privacy-focused analytics alternative",
+          "completed": false,
+          "category": "Analytics & Tracking"
+        },
+        "contact-form-config": {
+          "title": "Contact Form - Configure contact form email delivery (Resend API)",
+          "completed": false,
+          "category": "Analytics & Tracking"
+        }
+      }
+    },
+    "technical": {
+      "name": "Technical & Performance",
+      "tasks": {
+        "remove-demo-content": {
+          "title": "Remove Demo Content - Delete all placeholder MDX files",
+          "completed": false,
+          "category": "Content Management"
+        },
+        "blog-setup": {
+          "title": "Blog Setup - Remove blog references if not using, or add your content",
+          "completed": false,
+          "category": "Content Management"
+        },
+        "content-validation": {
+          "title": "Content Validation - Ensure all MDX files have proper frontmatter",
+          "completed": false,
+          "category": "Content Management"
+        },
+        "image-optimization": {
+          "title": "Image Optimization - Ensure all images are optimized and have alt text",
+          "completed": false,
+          "category": "Performance & SEO"
+        },
+        "loading-performance": {
+          "title": "Loading Performance - Test and optimize Core Web Vitals",
+          "completed": false,
+          "category": "Performance & SEO"
+        },
+        "mobile-responsive": {
+          "title": "Mobile Responsiveness - Test on all device sizes",
+          "completed": false,
+          "category": "Performance & SEO"
+        },
+        "accessibility": {
+          "title": "Accessibility - Run accessibility audit and fix issues",
+          "completed": false,
+          "category": "Performance & SEO"
+        },
+        "rate-limiting": {
+          "title": "Rate Limiting - Configure contact form rate limiting",
+          "completed": false,
+          "category": "Security & Compliance"
+        },
+        "privacy-policy": {
+          "title": "Privacy Policy - Add privacy policy if collecting user data",
+          "completed": false,
+          "category": "Security & Compliance"
+        },
+        "terms-service": {
+          "title": "Terms of Service - Add terms if needed",
+          "completed": false,
+          "category": "Security & Compliance"
+        },
+        "gdpr-compliance": {
+          "title": "GDPR Compliance - Ensure compliance if targeting EU users",
+          "completed": false,
+          "category": "Security & Compliance"
+        }
+      }
+    },
+    "deployment": {
+      "name": "Deployment & Launch",
+      "tasks": {
+        "cross-browser-testing": {
+          "title": "Cross-Browser Testing - Test in Chrome, Firefox, Safari, Edge",
+          "completed": false,
+          "category": "Pre-Launch Testing"
+        },
+        "mobile-testing": {
+          "title": "Mobile Testing - Test on actual mobile devices",
+          "completed": false,
+          "category": "Pre-Launch Testing"
+        },
+        "contact-form-testing": {
+          "title": "Contact Form Testing - Verify contact form works end-to-end",
+          "completed": false,
+          "category": "Pre-Launch Testing"
+        },
+        "link-validation": {
+          "title": "Link Validation - Check all internal and external links work",
+          "completed": false,
+          "category": "Pre-Launch Testing"
+        },
+        "domain-setup": {
+          "title": "Domain Setup - Configure your custom domain",
+          "completed": false,
+          "category": "Domain & Hosting"
+        },
+        "ssl-certificate": {
+          "title": "SSL Certificate - Ensure HTTPS is properly configured",
+          "completed": false,
+          "category": "Domain & Hosting"
+        },
+        "dns-configuration": {
+          "title": "DNS Configuration - Set up proper DNS records",
+          "completed": false,
+          "category": "Domain & Hosting"
+        },
+        "cdn-setup": {
+          "title": "CDN Setup - Configure CDN for optimal performance",
+          "completed": false,
+          "category": "Domain & Hosting"
+        },
+        "search-console": {
+          "title": "Search Console - Submit sitemap to Google Search Console",
+          "completed": false,
+          "category": "Post-Launch"
+        },
+        "analytics-verification": {
+          "title": "Analytics Verification - Verify tracking is working",
+          "completed": false,
+          "category": "Post-Launch"
+        },
+        "social-sharing": {
+          "title": "Social Media Sharing - Test Open Graph images and meta tags",
+          "completed": false,
+          "category": "Post-Launch"
+        },
+        "performance-monitoring": {
+          "title": "Performance Monitoring - Set up ongoing performance monitoring",
+          "completed": false,
+          "category": "Post-Launch"
+        }
+      }
+    }
+  }
+}
