@@ -1,6 +1,6 @@
 import { ContactForm } from '@/components/contact/contact-form'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Mail, MapPin, Clock } from 'lucide-react'
+import { Mail, MapPin, Clock, Phone } from 'lucide-react'
 import { Metadata } from 'next'
 import { generatePageMetadata } from '@/lib/seo'
 
@@ -49,10 +49,10 @@ export default function ContactPage() {
                   Prefer email? Drop me a line directly at:
                 </p>
                 <a 
-                  href="mailto:hello@example.com" 
+                  href="mailto:lsuryatej@gmail.com" 
                   className="text-lg font-medium hover:underline"
                 >
-                  hello@example.com
+                  lsuryatej@gmail.com
                 </a>
               </CardContent>
             </Card>
@@ -74,13 +74,33 @@ export default function ContactPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
+                  <Phone className="h-5 w-5" />
+                  Phone
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-pretty">
+                  Available for calls during business hours:
+                </p>
+                <a 
+                  href="tel:+919880984934" 
+                  className="text-lg font-medium hover:underline"
+                >
+                  +91 9880984934
+                </a>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
                   <MapPin className="h-5 w-5" />
                   Location
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Based in [Your Location]
+                  Based in Hyderabad, India
                   <br />
                   Available for remote work worldwide
                 </p>

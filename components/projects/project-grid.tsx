@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ProjectCard } from './project-card';
-import { StaggerChildren } from '@/lib/motion/primitives';
+// import { StaggerChildren } from '@/lib/motion/primitives';
 import type { Project } from 'contentlayer/generated';
 
 interface ProjectGridProps {

@@ -154,7 +154,7 @@ export const FadeIn = forwardRef<HTMLDivElement, BaseMotionProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, margin: '-50%' }}
         variants={variants}
         transition={{ delay }}
       >
@@ -165,6 +165,81 @@ export const FadeIn = forwardRef<HTMLDivElement, BaseMotionProps>(
 );
 
 FadeIn.displayName = 'FadeIn';
+
+// ImmediateFadeIn Component for above-the-fold content
+export const ImmediateFadeIn = forwardRef<HTMLDivElement, BaseMotionProps>(
+  ({ children, delay = 0, duration, className, disabled = false }, ref) => {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
+      return <div ref={ref} className={className}>{children}</div>;
+    }
+
+    const variants = duration ? {
+      ...fadeInVariants,
+      visible: {
+        opacity: 1,
+        transition: {
+          duration: duration / 1000,
+          ease: motionTokens.easings.entrance,
+        },
+      },
+    } : fadeInVariants;
+
+    return (
+      <motion.div
+        ref={ref}
+        className={className}
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ delay }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+);
+
+ImmediateFadeIn.displayName = 'ImmediateFadeIn';
+
+// ImmediateRiseIn Component for above-the-fold content
+export const ImmediateRiseIn = forwardRef<HTMLDivElement, BaseMotionProps>(
+  ({ children, delay = 0, duration, className, disabled = false }, ref) => {
+    const shouldReduceMotion = useReducedMotion();
+    
+    if (disabled || shouldReduceMotion) {
+      return <div ref={ref} className={className}>{children}</div>;
+    }
+
+    const variants = duration ? {
+      ...riseInVariants,
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: duration / 1000,
+          ease: motionTokens.easings.entrance,
+        },
+      },
+    } : riseInVariants;
+
+    return (
+      <motion.div
+        ref={ref}
+        className={className}
+        initial="hidden"
+        animate="visible"
+        variants={variants}
+        transition={{ delay }}
+      >
+        {children}
+      </motion.div>
+    );
+  }
+);
+
+ImmediateRiseIn.displayName = 'ImmediateRiseIn';
 
 // RiseIn Component
 export const RiseIn = forwardRef<HTMLDivElement, BaseMotionProps>(
@@ -193,7 +268,7 @@ export const RiseIn = forwardRef<HTMLDivElement, BaseMotionProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, margin: '-50%' }}
         variants={variants}
         transition={{ delay }}
       >
@@ -232,7 +307,7 @@ export const ScaleIn = forwardRef<HTMLDivElement, BaseMotionProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, margin: '-50%' }}
         variants={variants}
         transition={{ delay }}
       >
@@ -270,7 +345,7 @@ export const SlideIn = forwardRef<HTMLDivElement, SlideInProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, margin: '-50%' }}
         variants={variants}
         transition={{ delay }}
       >
@@ -313,7 +388,7 @@ export const StaggerChildren = forwardRef<HTMLDivElement, StaggerChildrenProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, margin: '-50%' }}
         variants={containerVariants}
       >
         {children}

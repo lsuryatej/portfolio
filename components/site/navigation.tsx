@@ -177,9 +177,9 @@ export function Navigation() {
         <Link
           href="/"
           className="text-xl font-semibold tracking-tight transition-colors hover:text-foreground/80 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md"
-          aria-label="Portfolio - Go to homepage"
+          aria-label="Suryatej - Go to homepage"
         >
-          Portfolio
+          Suryatej
         </Link>
 
         {/* Desktop Navigation */}

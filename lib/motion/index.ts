@@ -22,6 +22,8 @@ export {
   SlideIn,
   StaggerChildren,
   Magnetic,
+  ImmediateFadeIn,
+  ImmediateRiseIn,
 } from './primitives';
 
 // Lazy-loaded heavy animation components

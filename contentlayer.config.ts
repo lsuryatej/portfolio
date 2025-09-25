@@ -11,14 +11,18 @@ export const Project = defineDocumentType(() => ({
     slug: { type: 'string', required: true },
     summary: { type: 'string', required: true },
     coverImage: { type: 'string', required: true },
+    image: { type: 'string' }, // For backward compatibility
     gallery: { type: 'list', of: { type: 'string' } },
     tags: { type: 'list', of: { type: 'string' } },
+    technologies: { type: 'list', of: { type: 'string' } }, // Added missing field
     role: { type: 'string', required: true },
     tools: { type: 'list', of: { type: 'string' } },
     client: { type: 'string' },
     year: { type: 'number' },
     outcome: { type: 'string' },
     featured: { type: 'boolean', default: false },
+    github: { type: 'string' }, // Added missing field
+    demo: { type: 'string' }, // Added missing field
     chapters: {
       type: 'json',
     },

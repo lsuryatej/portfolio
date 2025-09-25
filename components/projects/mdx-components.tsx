@@ -6,7 +6,9 @@ import { Card } from '@/components/ui/card';
 
 import { RiseIn, FadeIn } from '@/lib/motion/primitives';
 import { cn } from '@/lib/utils';
-import { BeforeAfterSlider, ScrollSequence, VideoScrollSequence } from './index';
+// Import components directly to avoid circular dependencies
+import { BeforeAfterSlider } from './before-after-slider';
+import { ScrollSequence, VideoScrollSequence } from './scroll-sequence';
 
 // Custom heading component with anchor links
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {

@@ -24,36 +24,37 @@ const timelineData: TimelineItem[] = [
   {
     id: '1',
     year: '2024',
-    title: 'Senior Frontend Developer',
-    company: 'Tech Company',
-    description: 'Leading frontend development for modern web applications using React, Next.js, and TypeScript. Focused on performance optimization and user experience.',
-    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    title: 'Data/Software Engineer',
+    company: 'Leading UK Bank',
+    description: 'Driving fraud prevention initiatives using GCP, BigQuery, and large-scale data pipeline architecture. Developing AI-powered solutions to combat financial crime and streamline workflows.',
+    technologies: ['GCP BigQuery', 'Python', 'SQL', 'Dataflow', 'Pub/Sub', 'AI/ML'],
     type: 'work'
   },
   {
     id: '2',
-    year: '2023',
-    title: 'Frontend Developer',
-    company: 'Digital Agency',
-    description: 'Developed responsive web applications and collaborated with design teams to create engaging user interfaces.',
-    technologies: ['React', 'JavaScript', 'SCSS', 'Figma'],
-    type: 'work'
-  },
-  {
-    id: '3',
-    year: '2022',
-    title: 'Computer Science Degree',
-    company: 'University',
-    description: 'Bachelor of Science in Computer Science with focus on web technologies and software engineering principles.',
+    year: '2024',
+    title: 'Bachelor of Technology',
+    company: 'Indian Institute of Technology Guwahati',
+    description: 'Graduated with degree in Electrical and Electronics Engineering. Developed strong foundation in problem-solving, analytical thinking, and technical implementation.',
+    technologies: ['Engineering Mathematics', 'Signal Processing', 'Control Systems', 'Programming'],
     type: 'education'
   },
   {
+    id: '3',
+    year: '2023',
+    title: 'Data Engineer Intern',
+    company: 'Tech Company',
+    description: 'Built data pipelines and analytics solutions. Gained hands-on experience with cloud platforms and data processing technologies.',
+    technologies: ['Python', 'SQL', 'GCP', 'Data Analysis'],
+    type: 'work'
+  },
+  {
     id: '4',
-    year: '2021',
-    title: 'Junior Developer',
+    year: '2022',
+    title: 'Software Development Intern',
     company: 'Startup',
-    description: 'Started career building web applications and learning modern development practices in an agile environment.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Node.js'],
+    description: 'Started career in software development, building web applications and learning modern development practices in an agile environment.',
+    technologies: ['JavaScript', 'React', 'Node.js', 'Git'],
     type: 'work'
   }
 ];

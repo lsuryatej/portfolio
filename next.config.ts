@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   experimental: {
     mdxRs: true,
     optimizePackageImports: ['gsap', 'framer-motion', 'lenis'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   images: {
     remotePatterns: [
@@ -21,8 +29,6 @@ const nextConfig: NextConfig = {
   },
   // Enable compression
   compress: true,
-  // Optimize bundle
-  swcMinify: true,
   // Enable static optimization
   output: 'standalone',
   // Bundle analyzer in development

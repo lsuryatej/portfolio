@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { RiseIn, FadeIn } from '@/lib/motion/primitives';
+import { RiseIn, ImmediateRiseIn, ImmediateFadeIn } from '@/lib/motion/primitives';
 import { Timeline, Skills, PressLogos, ResumeDownload } from '@/components/about';
 import { Separator } from '@/components/ui/separator';
 import { generatePageMetadata } from '@/lib/seo';
@@ -16,16 +16,16 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 lg:py-24">
         <div className="mx-auto max-w-4xl text-center">
-          <RiseIn>
+          <ImmediateRiseIn>
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
               About Me
             </h1>
-          </RiseIn>
-          <FadeIn delay={0.2}>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto hero-text">
-              I&apos;m a passionate frontend developer with a love for creating beautiful, performant web experiences. With expertise in modern technologies and a keen eye for design, I bring ideas to life through code.
+          </ImmediateRiseIn>
+          <ImmediateFadeIn delay={0.2}>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto hero-text">
+              Data, Software, and AI Engineer specializing in GCP, BigQuery, and large-scale data pipeline architecture, currently driving fraud prevention initiatives for a leading UK bank. Passionate about leveraging AI to combat financial crime, streamline workflows, and deliver innovative, production-grade solutions.
             </p>
-          </FadeIn>
+          </ImmediateFadeIn>
         </div>
       </section>
 

@@ -16,23 +16,26 @@ interface SkillsProps {
 }
 
 const defaultSkills: Skill[] = [
-  // Frontend
-  { name: 'React', level: 95, category: 'Frontend' },
-  { name: 'Next.js', level: 90, category: 'Frontend' },
-  { name: 'TypeScript', level: 88, category: 'Frontend' },
-  { name: 'Tailwind CSS', level: 92, category: 'Frontend' },
-  { name: 'Framer Motion', level: 85, category: 'Frontend' },
+  // Data Engineering
+  { name: 'GCP BigQuery', level: 95, category: 'Data Engineering' },
+  { name: 'Python & SQL', level: 92, category: 'Data Engineering' },
+  { name: 'Data Modeling', level: 88, category: 'Data Engineering' },
+  { name: 'Real-time Stream Processing', level: 85, category: 'Data Engineering' },
   
-  // Backend
-  { name: 'Node.js', level: 80, category: 'Backend' },
-  { name: 'Python', level: 75, category: 'Backend' },
-  { name: 'PostgreSQL', level: 70, category: 'Backend' },
+  // AI & ML
+  { name: 'LLM & GenAI Integration', level: 90, category: 'AI & ML' },
+  { name: 'Fraud Detection Analytics', level: 88, category: 'AI & ML' },
+  { name: 'Machine Learning', level: 82, category: 'AI & ML' },
   
-  // Tools & Others
-  { name: 'Git', level: 90, category: 'Tools' },
-  { name: 'Figma', level: 85, category: 'Design' },
-  { name: 'Docker', level: 65, category: 'DevOps' },
-  { name: 'AWS', level: 60, category: 'DevOps' }
+  // Cloud & DevOps
+  { name: 'GCP (Dataflow, Pub/Sub)', level: 90, category: 'Cloud & DevOps' },
+  { name: 'CI/CD Automation', level: 85, category: 'Cloud & DevOps' },
+  { name: 'Cloud-Native Microservices', level: 80, category: 'Cloud & DevOps' },
+  
+  // Software Development
+  { name: 'API Development', level: 88, category: 'Software Development' },
+  { name: 'GitHub Actions', level: 85, category: 'Software Development' },
+  { name: 'Product-Driven Design', level: 90, category: 'Software Development' }
 ];
 
 interface SkillBarProps {

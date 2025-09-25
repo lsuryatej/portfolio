@@ -40,7 +40,7 @@ export function ResumeDownload({
           </motion.div>
           
           <h3 className="text-xl font-semibold mb-2">Download Resume</h3>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto text-pretty leading-relaxed">
             Get a detailed overview of my experience, skills, and achievements in a downloadable PDF format.
           </p>
           

@@ -20,7 +20,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
         </RiseIn>
 
         <RiseIn delay={0.1}>
-          <p className="text-xl text-muted-foreground max-w-3xl">
+          <p className="text-xl text-muted-foreground max-w-3xl text-pretty leading-relaxed">
             {project.summary}
           </p>
         </RiseIn>

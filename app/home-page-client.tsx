@@ -6,7 +6,7 @@ import { MagneticButton } from '@/components/ui/magnetic-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Github, Star, ArrowDown, Mail, ExternalLink } from 'lucide-react';
-import { FadeIn, RiseIn, ScaleIn, StaggerChildren } from '@/lib/motion';
+import { RiseIn, ScaleIn, StaggerChildren, ImmediateFadeIn, ImmediateRiseIn } from '@/lib/motion';
 
 export default function HomePageClient() {
   const heroRef = useRef<HTMLElement>(null);
@@ -75,25 +75,25 @@ export default function HomePageClient() {
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center perspective-1000">
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <FadeIn delay={0.3}>
+          <ImmediateFadeIn delay={0.3}>
             <p className="text-sm uppercase tracking-wider text-muted-foreground mb-6 font-medium">
-              Portfolio & Creative Studio
+              Data/Software Engineer
             </p>
-          </FadeIn>
+          </ImmediateFadeIn>
 
           <h1 
             ref={titleRef}
             className="text-[clamp(3rem,8vw,6rem)] leading-[0.9] tracking-[-0.04em] font-bold mb-8 font-display"
             style={{ perspective: '1000px' }}
           >
-            Creative Developer
+            Suryatej
           </h1>
 
-          <RiseIn delay={1.5}>
-            <p className="text-xl text-muted-foreground max-w-xl mx-auto mb-12 hero-text text-center">
-              Crafting exceptional digital experiences through innovative design, cutting-edge technology, and meticulous attention to detail.
+          <ImmediateRiseIn delay={1.5}>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12 hero-text text-center leading-relaxed text-pretty">
+              Data, Software, and AI Engineer specializing in GCP, BigQuery, and large-scale data pipeline architecture. Passionate about leveraging AI to combat financial crime and deliver innovative, production-grade solutions.
             </p>
-          </RiseIn>
+          </ImmediateRiseIn>
 
           <StaggerChildren stagger={0.1}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">

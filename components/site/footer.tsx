@@ -1,27 +1,22 @@
 import Link from "next/link"
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 
 const socialLinks = [
   {
     name: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/lsuryatej",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/suryatej-lalam-48a989201/",
     icon: Linkedin,
   },
   {
-    name: "Twitter",
-    href: "https://twitter.com",
-    icon: Twitter,
-  },
-  {
     name: "Email",
-    href: "mailto:hello@example.com",
+    href: "mailto:lsuryatej@gmail.com",
     icon: Mail,
   },
 ]
@@ -56,11 +51,11 @@ export function Footer() {
             <Link
               href="/"
               className="text-xl font-semibold tracking-tight mb-4 block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-md"
-              aria-label="Portfolio - Go to homepage"
+              aria-label="Suryatej - Go to homepage"
             >
-              Portfolio
+              Suryatej
             </Link>
-            <p className="text-sm text-muted-foreground mb-6 max-w-md whitespace-normal leading-relaxed">
+            <p className="text-sm text-muted-foreground mb-6 max-w-md text-pretty leading-relaxed">
               A personal portfolio website focusing on modular architecture and exceptional user experience.
             </p>
             
@@ -115,7 +110,7 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Portfolio. All rights reserved.
+            © {new Date().getFullYear()} Suryatej. All rights reserved.
           </p>
           
           {/* CTA */}

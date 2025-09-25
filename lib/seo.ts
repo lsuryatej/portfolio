@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import { Project, Post } from 'contentlayer/generated';
 
 const siteConfig = {
-  name: 'Portfolio',
-  description: 'A modern personal portfolio showcasing creative work and technical expertise',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio.example.com',
+  name: 'Suryatej',
+  description: 'Data/Software Engineer portfolio showcasing technical expertise and innovative solutions',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://suryatej.vercel.app',
   ogImage: '/og/default.png',
-  creator: '@portfolio',
+  creator: '@suryatej',
 };
 
 // Generate dynamic OG image URL
@@ -42,9 +42,15 @@ export function generatePersonStructuredData() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Portfolio Owner',
-    jobTitle: 'Creative Developer',
+    name: 'Suryatej',
+    jobTitle: 'Data/Software Engineer',
     url: siteConfig.url,
+    email: 'lsuryatej@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Hyderabad',
+      addressCountry: 'India',
+    },
     sameAs: [
       // Add social media URLs here
     ],
@@ -71,7 +77,7 @@ export function generateArticleStructuredData(post: Post) {
     dateModified: post.date,
     author: {
       '@type': 'Person',
-      name: 'Portfolio Owner',
+      name: 'Suryatej',
       url: siteConfig.url,
     },
     publisher: {
@@ -100,7 +106,7 @@ export function generateCreativeWorkStructuredData(project: Project) {
     }),
     creator: {
       '@type': 'Person',
-      name: 'Portfolio Owner',
+      name: 'Suryatej',
       url: siteConfig.url,
     },
     dateCreated: project.year ? `${project.year}-01-01` : undefined,
