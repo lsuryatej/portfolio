@@ -60,9 +60,8 @@ export function Footer() {
             >
               Portfolio
             </Link>
-            <p className="text-sm text-muted-foreground mb-6 max-w-md">
-              A production-ready portfolio showcasing world-class scroll animations,
-              modular architecture, and exceptional user experience.
+            <p className="text-sm text-muted-foreground mb-6 max-w-md whitespace-normal leading-relaxed">
+              A personal portfolio website focusing on modular architecture and exceptional user experience.
             </p>
             
             {/* Social Links */}

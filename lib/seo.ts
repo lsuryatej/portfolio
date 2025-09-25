@@ -3,7 +3,7 @@ import { Project, Post } from 'contentlayer/generated';
 
 const siteConfig = {
   name: 'Portfolio',
-  description: 'A modern portfolio showcasing creative work and technical expertise',
+  description: 'A modern personal portfolio showcasing creative work and technical expertise',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio.example.com',
   ogImage: '/og/default.png',
   creator: '@portfolio',

@@ -17,7 +17,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://portfolio.example.c
 export const metadata: Metadata = {
   ...generatePageMetadata({
     title: 'Professional Web Developer',
-    description: 'A production-ready portfolio showcasing world-class scroll animations, modular architecture, and exceptional user experience.',
+    description: 'A portfolio focusing on modular architecture and exceptional user experience.',
     path: '',
   }),
   metadataBase: new URL(siteUrl),
