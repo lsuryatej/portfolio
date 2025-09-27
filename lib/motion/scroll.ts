@@ -2,11 +2,12 @@
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motionTokens } from './tokens';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { DURATIONS, EASING, VIEWPORT, motionTokens } from './tokens';
 
-// Register ScrollTrigger plugin
+// Register GSAP plugins
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 
 /**
@@ -17,15 +18,15 @@ export function initGSAP() {
 
   // Set GSAP defaults
   gsap.defaults({
-    duration: motionTokens.durations.slow / 1000,
-    ease: motionTokens.gsapEasings.standard,
+    duration: DURATIONS.md,
+    ease: EASING.standard,
   });
 
   // Configure ScrollTrigger defaults
   ScrollTrigger.defaults({
     toggleActions: 'play none none reverse',
-    start: motionTokens.scroll.start,
-    end: motionTokens.scroll.end,
+    start: 'top 80%',
+    end: 'bottom 20%',
   });
 
   // Refresh ScrollTrigger on window resize
@@ -300,6 +301,95 @@ export function refreshScrollTrigger() {
     ScrollTrigger.refresh();
   }
 }
+
+/**
+ * Create horizontal scroll section
+ */
+export function createHorizontalScroll(
+  container: string | Element,
+  items: string | Element[]
+) {
+  if (typeof window === 'undefined') return null;
+
+  const sections = gsap.utils.toArray(items);
+  
+  return gsap.to(sections, {
+    xPercent: -100 * (sections.length - 1),
+    ease: 'none',
+    scrollTrigger: {
+      trigger: container,
+      pin: true,
+      scrub: 1,
+      snap: 1 / (sections.length - 1),
+      end: () => '+=' + (typeof container === 'string' 
+        ? (document.querySelector(container) as HTMLElement)?.offsetWidth || 0
+        : (container as HTMLElement).offsetWidth || 0)
+    }
+  });
+}
+
+/**
+ * Parallax helper with data-speed attribute
+ */
+export function parallax(selector = '[data-speed]') {
+  if (typeof window === 'undefined') return;
+
+  gsap.utils.toArray<HTMLElement>(selector).forEach((el) => {
+    const speed = parseFloat(el.dataset.speed || '0.2');
+    const y = -50 * speed;
+    
+    gsap.to(el, {
+      yPercent: y,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  });
+}
+
+/**
+ * Magnetic sections that snap to viewport
+ */
+export function magneticSections(selector = '.magnetic-section') {
+  if (typeof window === 'undefined') return;
+
+  gsap.utils.toArray<HTMLElement>(selector).forEach(section => {
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top center',
+      end: 'bottom center',
+      onEnter: () => {
+        gsap.to(window, {
+          scrollTo: section,
+          duration: DURATIONS.md,
+          ease: EASING.standard
+        });
+      }
+    });
+  });
+}
+
+/**
+ * Velocity bus for scroll-based animations
+ */
+export const velocityBus = {
+  velocity: 0,
+  listeners: new Set<(velocity: number) => void>(),
+  
+  subscribe(callback: (velocity: number) => void) {
+    this.listeners.add(callback);
+    return () => this.listeners.delete(callback);
+  },
+  
+  update(velocity: number) {
+    this.velocity = velocity;
+    this.listeners.forEach(callback => callback(velocity));
+  }
+};
 
 /**
  * Utility to check if animations should be enabled

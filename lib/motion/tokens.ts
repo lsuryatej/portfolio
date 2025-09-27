@@ -1,103 +1,93 @@
 /**
  * Motion Design Tokens
- * 
- * Centralized animation constants for consistent motion design
- * across the portfolio website.
+ * Centralized configuration for all animations, transitions, and motion effects.
  */
 
-export const motionTokens = {
-  // Animation durations in milliseconds
-  durations: {
-    fast: 100,
-    normal: 200,
-    slow: 300,
-    slower: 500,
-    slowest: 800,
-  },
+// Duration tokens (in seconds for consistency)
+export const DURATIONS = {
+  xs: 0.25,
+  sm: 0.4,
+  md: 0.7,
+  lg: 1.0,
+} as const;
 
-  // Easing curves for different animation types
+// Easing curves
+export const EASING = {
+  standard: 'power2.out',
+  entrance: 'power3.out',
+  exit: 'power3.in',
+} as const;
+
+// Viewport detection settings
+export const VIEWPORT = {
+  rootMargin: '-20% 0px',
+  amount: 0.2,
+} as const;
+
+// Dynamic stagger calculation
+export const STAGGER = (count: number) => Math.min(0.7, 0.04 * count + 0.2);
+
+// Legacy tokens for backward compatibility
+export const motionTokens = {
+  durations: {
+    fast: DURATIONS.xs * 1000,
+    normal: DURATIONS.sm * 1000,
+    slow: DURATIONS.md * 1000,
+    slower: DURATIONS.lg * 1000,
+    slowest: 1000,
+  },
   easings: {
-    // Standard easing for most animations
     standard: [0.4, 0.0, 0.2, 1] as const,
-    // Entrance animations (elements coming into view)
     entrance: [0.0, 0.0, 0.2, 1] as const,
-    // Exit animations (elements leaving view)
     exit: [0.4, 0.0, 1, 1] as const,
-    // Bouncy animations for playful interactions
     bounce: [0.68, -0.55, 0.265, 1.55] as const,
-    // Sharp animations for quick interactions
     sharp: [0.4, 0.0, 0.6, 1] as const,
   },
-
-  // GSAP-compatible easing strings
   gsapEasings: {
-    standard: 'power2.out',
-    entrance: 'power2.out',
-    exit: 'power2.in',
+    standard: EASING.standard,
+    entrance: EASING.entrance,
+    exit: EASING.exit,
     bounce: 'back.out(1.7)',
     sharp: 'power3.out',
     elastic: 'elastic.out(1, 0.3)',
   },
-
-  // Reveal animation settings
   reveal: {
-    distance: 24, // Distance elements move during reveal
-    stagger: 0.1, // Delay between staggered elements
-    threshold: 0.1, // Intersection observer threshold
+    distance: 24,
+    stagger: 0.1,
+    threshold: VIEWPORT.amount,
   },
-
-  // Parallax settings
   parallax: {
-    subtle: 0.2,   // Subtle background movement
-    moderate: 0.5, // Moderate parallax effect
-    strong: 0.8,   // Strong parallax effect
+    subtle: 0.2,
+    moderate: 0.5,
+    strong: 0.8,
   },
-
-  // Magnetic cursor settings
   magnetic: {
-    strength: 0.3,     // Attraction strength
-    ease: 'power2.out', // Easing for magnetic movement
-    duration: 0.3,     // Animation duration
+    strength: 0.3,
+    ease: 'power2.out',
+    duration: 0.3,
   },
-
-  // Scroll animation settings
   scroll: {
-    // ScrollTrigger defaults
     start: 'top 80%',
     end: 'bottom 20%',
-    // Smooth scrolling settings
-    lerp: 0.1,        // Linear interpolation factor
-    multiplier: 1,    // Scroll speed multiplier
+    lerp: 0.1,
+    multiplier: 1,
   },
-
-  // Spring physics settings (for Framer Motion)
   springs: {
-    gentle: {
-      type: 'spring' as const,
-      stiffness: 120,
-      damping: 14,
-    },
-    bouncy: {
-      type: 'spring' as const,
-      stiffness: 400,
-      damping: 10,
-    },
-    snappy: {
-      type: 'spring' as const,
-      stiffness: 300,
-      damping: 30,
-    },
+    gentle: { type: 'spring' as const, stiffness: 120, damping: 14 },
+    bouncy: { type: 'spring' as const, stiffness: 400, damping: 10 },
+    snappy: { type: 'spring' as const, stiffness: 300, damping: 30 },
   },
-
-  // Transform values
   transforms: {
-    slideDistance: 50,  // Distance for slide animations
-    scaleStart: 0.8,   // Starting scale for scale animations
-    rotateAngle: 5,    // Rotation angle for tilt effects
+    slideDistance: 50,
+    scaleStart: 0.8,
+    rotateAngle: 5,
   },
 } as const;
 
-// Type exports for TypeScript support
+// Type exports
+export type MotionTokens = typeof motionTokens;
+export type Duration = keyof typeof DURATIONS;
+export type Easing = keyof typeof EASING;
 export type MotionDuration = keyof typeof motionTokens.durations;
 export type MotionEasing = keyof typeof motionTokens.easings;
 export type GSAPEasing = keyof typeof motionTokens.gsapEasings;

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { ReactNode, forwardRef, useEffect, useState, useRef, useCallback } from 'react';
-import { motionTokens } from './tokens';
+import { DURATIONS, EASING, VIEWPORT, STAGGER, motionTokens } from './tokens';
 import { prefersReducedMotion } from '../accessibility';
 import { cn } from '@/lib/utils';
 
@@ -15,7 +15,7 @@ const fadeInVariants: Variants = {
   visible: { 
     opacity: 1,
     transition: {
-      duration: motionTokens.durations.normal / 1000,
+      duration: DURATIONS.sm,
       ease: motionTokens.easings.entrance,
     },
   },
@@ -30,7 +30,7 @@ const riseInVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: motionTokens.durations.slow / 1000,
+      duration: DURATIONS.md,
       ease: motionTokens.easings.entrance,
     },
   },
@@ -45,7 +45,7 @@ const scaleInVariants: Variants = {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: motionTokens.durations.slow / 1000,
+      duration: DURATIONS.md,
       ease: motionTokens.easings.bounce,
     },
   },
@@ -58,7 +58,7 @@ const slideInVariants = {
       opacity: 1, 
       x: 0,
       transition: {
-        duration: motionTokens.durations.slow / 1000,
+        duration: DURATIONS.md,
         ease: motionTokens.easings.entrance,
       },
     },
@@ -69,7 +69,7 @@ const slideInVariants = {
       opacity: 1, 
       x: 0,
       transition: {
-        duration: motionTokens.durations.slow / 1000,
+        duration: DURATIONS.md,
         ease: motionTokens.easings.entrance,
       },
     },
@@ -80,7 +80,7 @@ const slideInVariants = {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: motionTokens.durations.slow / 1000,
+        duration: DURATIONS.md,
         ease: motionTokens.easings.entrance,
       },
     },
@@ -91,7 +91,7 @@ const slideInVariants = {
       opacity: 1, 
       y: 0,
       transition: {
-        duration: motionTokens.durations.slow / 1000,
+        duration: DURATIONS.md,
         ease: motionTokens.easings.entrance,
       },
     },
@@ -154,7 +154,7 @@ export const FadeIn = forwardRef<HTMLDivElement, BaseMotionProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50%' }}
+        viewport={{ margin: VIEWPORT.rootMargin, amount: VIEWPORT.amount, once: false }}
         variants={variants}
         transition={{ delay }}
       >
@@ -268,7 +268,7 @@ export const RiseIn = forwardRef<HTMLDivElement, BaseMotionProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50%' }}
+        viewport={{ margin: VIEWPORT.rootMargin, amount: VIEWPORT.amount, once: false }}
         variants={variants}
         transition={{ delay }}
       >
@@ -307,7 +307,7 @@ export const ScaleIn = forwardRef<HTMLDivElement, BaseMotionProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50%' }}
+        viewport={{ margin: VIEWPORT.rootMargin, amount: VIEWPORT.amount, once: false }}
         variants={variants}
         transition={{ delay }}
       >
@@ -345,7 +345,7 @@ export const SlideIn = forwardRef<HTMLDivElement, SlideInProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50%' }}
+        viewport={{ margin: VIEWPORT.rootMargin, amount: VIEWPORT.amount, once: false }}
         variants={variants}
         transition={{ delay }}
       >
@@ -388,7 +388,7 @@ export const StaggerChildren = forwardRef<HTMLDivElement, StaggerChildrenProps>(
         className={className}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: '-50%' }}
+        viewport={{ margin: VIEWPORT.rootMargin, amount: VIEWPORT.amount, once: false }}
         variants={containerVariants}
       >
         {children}

@@ -668,4 +668,54 @@ Enhanced typography utilities */
     margin-left: auto;
     margin-right: auto;
   }
+}/* Advan
+ced Animation Styles */
+
+/* 3D perspective utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-gpu {
+  transform: translateZ(0);
+}
+
+/* Gradient mesh CSS variables */
+:root {
+  --grad-angle: 45deg;
+  --grad-stop1: hsl(200, 100%, 70%);
+  --grad-stop2: hsl(240, 100%, 70%);
+  --grad-stop3: hsl(280, 100%, 70%);
+}
+
+/* Hero text balancing */
+.hero-text {
+  text-wrap: balance;
+  max-width: 45ch;
+}
+
+/* Magnetic cursor interactions */
+.magnetic-element {
+  cursor: pointer;
+  will-change: transform, filter;
+}
+
+/* Scroll progress indicator */
+.scroll-progress {
+  --scroll-progress: 0;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-auto {
+  will-change: auto;
+}
+
+/* Content visibility for performance */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
 }
