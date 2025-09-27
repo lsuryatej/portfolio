@@ -24,7 +24,7 @@ export default function ProgressRail({
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || '');
   const [isVisible, setIsVisible] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const railRef = useRef<HTMLNavElement>(null);
+  const railRef = useRef<HTMLElement>(null);
 
   // Smooth scroll to section
   const scrollToSection = useCallback((sectionId: string) => {

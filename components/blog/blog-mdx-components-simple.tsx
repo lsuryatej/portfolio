@@ -23,7 +23,7 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
       level === 6 && 'text-base font-semibold mt-4 mb-2'
     );
 
-    const HeadingTag = `h${level}` as keyof React.JSX.IntrinsicElements;
+    const HeadingTag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
     return (
       <HeadingTag id={id} className={className} {...props}>

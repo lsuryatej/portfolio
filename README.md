@@ -388,3 +388,31 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Built with ❤️ and modern web technologies
+
+## 🎭 Advanced Motion System
+
+This portfolio features a sophisticated animation system with multiple levels of complexity:
+
+### Motion Levels
+- **Basic** - Simple fades and transitions (reduced motion)
+- **Enhanced** - Particles, gradients, 3D effects (default)
+- **Max** - WebGL shaders, complex sequences, all features
+
+### Key Features
+- 🌊 **Smooth Scrolling** - Lenis-powered buttery smooth scrolling
+- ✨ **Particle System** - Interactive canvas particles with velocity response
+- 🎨 **WebGL Backgrounds** - Three.js shader backgrounds (max level)
+- 📱 **Responsive** - Automatic performance scaling based on device
+- ♿ **Accessible** - Full reduced motion support
+- 📊 **Telemetry** - Performance monitoring and analytics
+
+### Configuration
+
+Set motion level via environment variable:
+```bash
+NEXT_PUBLIC_MOTION_LEVEL=enhanced  # basic | enhanced | max
+```
+
+### Documentation
+- 📖 **Motion System:** See `docs/MOTION_SYSTEM.md`
+- 🎨 **Animation Guide:** See `docs/ADVANCED_ANIMATIONS.md`
