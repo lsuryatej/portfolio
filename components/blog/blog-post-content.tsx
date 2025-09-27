@@ -1,6 +1,6 @@
 import { Post } from 'contentlayer/generated'
 import { format } from 'date-fns'
-import { getMDXComponent } from 'next-contentlayer/hooks'
+import { getMDXComponent } from 'next-contentlayer2/hooks'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'

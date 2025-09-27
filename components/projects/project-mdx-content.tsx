@@ -1,6 +1,6 @@
 'use client';
 
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import { useMDXComponent } from 'next-contentlayer2/hooks';
 import { Project } from 'contentlayer/generated';
 import { MDXComponents } from './mdx-components';
 import { useEffect, useState } from 'react';

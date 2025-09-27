@@ -55,7 +55,7 @@ export function Footer() {
             >
               Suryatej
             </Link>
-            <p className="text-sm text-muted-foreground mb-6 max-w-md text-pretty leading-relaxed">
+            <p className="text-sm text-muted-foreground mb-6 max-w-md hero-text leading-relaxed">
               A personal portfolio website focusing on modular architecture and exceptional user experience.
             </p>
             

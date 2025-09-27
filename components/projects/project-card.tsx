@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { OptimizedImage } from '@/components/ui/optimized-image';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { RiseIn } from '@/lib/motion/primitives';
+
 import type { Project } from 'contentlayer/generated';
 
 interface ProjectCardProps {
@@ -15,7 +15,7 @@ interface ProjectCardProps {
   index?: number;
 }
 
-export function ProjectCard({ project, priority = false, index = 0 }: ProjectCardProps) {
+export function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [, setImageLoaded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -95,12 +95,11 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
   };
 
   return (
-    <RiseIn delay={index * 0.1}>
-      <Link 
-        href={project.url} 
-        className="block group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-lg"
-        aria-label={`View ${project.title} project details`}
-      >
+    <Link 
+      href={project.url} 
+      className="block group focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-lg"
+      aria-label={`View ${project.title} project details`}
+    >
         <Card
           ref={cardRef}
           className="overflow-hidden border-0 bg-card/50 backdrop-blur-sm cursor-pointer group-hover:shadow-2xl group-hover:shadow-primary/10"
@@ -200,6 +199,5 @@ export function ProjectCard({ project, priority = false, index = 0 }: ProjectCar
           </CardContent>
         </Card>
       </Link>
-    </RiseIn>
   );
 }

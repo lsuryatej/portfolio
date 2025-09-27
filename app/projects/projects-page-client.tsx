@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react';
 import { allProjects } from 'contentlayer/generated';
 import { ProjectGrid, ProjectFilterBar } from '@/components/projects';
-import { FadeIn, RiseIn } from '@/lib/motion/primitives';
 
 export default function ProjectsPageClient() {
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
@@ -30,39 +29,42 @@ export default function ProjectsPageClient() {
     );
   }, [activeFilters]);
 
+
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="mb-12 text-center">
-          <FadeIn>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-12">
+        <div className="mx-auto max-w-7xl">
+          {/* Header */}
+          <div className="mb-12 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Projects
             </h1>
-          </FadeIn>
-          <RiseIn delay={0.1}>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto description-text">
-              A collection of projects showcasing modern web development, user experience design, and technical innovation.
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto hero-text">
+              A curated collection of projects showcasing modern web development, 
+              user experience design, and technical innovation.
             </p>
-          </RiseIn>
-        </div>
+          </div>
 
-        {/* Filter Bar */}
-        <div className="mb-8">
-          <ProjectFilterBar
-            tags={allTags}
+
+
+          {/* Filter Bar */}
+          <div className="mb-8">
+            <ProjectFilterBar
+              tags={allTags}
+              activeFilters={activeFilters}
+              onFilterChange={setActiveFilters}
+              projectCount={filteredProjects.length}
+              totalCount={allProjects.length}
+            />
+          </div>
+
+          {/* Projects Grid */}
+          <ProjectGrid
+            projects={filteredProjects}
             activeFilters={activeFilters}
-            onFilterChange={setActiveFilters}
-            projectCount={filteredProjects.length}
-            totalCount={allProjects.length}
           />
         </div>
-
-        {/* Projects Grid */}
-        <ProjectGrid
-          projects={allProjects}
-          activeFilters={activeFilters}
-        />
       </div>
     </div>
   );

@@ -367,7 +367,7 @@ describe('Cursor System', () => {
       jest.spyOn(document, 'createElement').mockImplementation((tagName) => {
         if (tagName === 'canvas') {
           const canvas = originalCreateElement.call(document, tagName);
-          canvas.getContext = jest.fn().mockReturnValue(null);
+          (canvas as HTMLCanvasElement).getContext = jest.fn().mockReturnValue(null);
           return canvas;
         }
         return originalCreateElement.call(document, tagName);
@@ -379,7 +379,7 @@ describe('Cursor System', () => {
     });
 
     test('should handle missing canvas context', () => {
-      mockCanvas.getContext = jest.fn().mockReturnValue(null);
+  (mockCanvas as HTMLCanvasElement).getContext = jest.fn().mockReturnValue(null);
       
       const destroy = initCursor();
       expect(destroy).toBeInstanceOf(Function);
