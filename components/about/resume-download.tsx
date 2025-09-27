@@ -14,8 +14,8 @@ interface ResumeDownloadProps {
 
 export function ResumeDownload({ 
   resumeUrl = '/resume.pdf',
-  linkedInUrl = 'https://linkedin.com/in/yourprofile',
-  githubUrl = 'https://github.com/yourusername'
+  linkedInUrl = 'https://linkedin.com/in/suryatejlalam',
+  githubUrl = 'https://github.com/suryatejlalam'
 }: ResumeDownloadProps) {
   const handleDownload = () => {
     // Create a temporary link element and trigger download
@@ -29,8 +29,8 @@ export function ResumeDownload({
 
   return (
     <RiseIn>
-      <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 border border-border/50">
-        <CardContent className="p-8 text-center">
+      <Card className="bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-950/10 dark:to-purple-950/10 border border-border/20 shadow-lg">
+        <CardContent className="p-8 text-center space-y-4">
           <motion.div
             className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6"
             whileHover={{ scale: 1.1, rotate: 5 }}
@@ -40,11 +40,11 @@ export function ResumeDownload({
           </motion.div>
           
           <h3 className="text-xl font-semibold mb-2">Download Resume</h3>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto text-pretty leading-relaxed">
+          <p className="text-muted-foreground mb-6 max-w-sm mx-auto leading-relaxed">
             Get a detailed overview of my experience, skills, and achievements in a downloadable PDF format.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <div className="flex flex-col gap-4 justify-center items-center">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button 
                 onClick={handleDownload}
@@ -56,11 +56,11 @@ export function ResumeDownload({
               </Button>
             </motion.div>
             
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2 justify-center">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   variant="outline" 
-                  size="lg"
+                  size="default"
                   asChild
                 >
                   <a 
@@ -78,7 +78,7 @@ export function ResumeDownload({
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button 
                   variant="outline" 
-                  size="lg"
+                  size="default"
                   asChild
                 >
                   <a 

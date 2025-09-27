@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { contactFormSchema } from '@/lib/validations/contact'
 import { rateLimit, getClientIP } from '@/lib/rate-limit'
 
+export const runtime = 'edge';
+
 export async function POST(request: NextRequest) {
   try {
     // Get client IP for rate limiting
