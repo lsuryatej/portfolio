@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { RiseIn, ImmediateRiseIn, ImmediateFadeIn } from '@/lib/motion/primitives';
-import { Timeline, Skills, PressLogos, ResumeDownload } from '@/components/about';
+import { Timeline, Skills, ResumeDownload } from '@/components/about';
 import { Separator } from '@/components/ui/separator';
 import { generatePageMetadata } from '@/lib/seo';
 
@@ -63,7 +63,8 @@ export default function AboutPage() {
 
       <Separator className="container mx-auto" />
 
-      {/* Press/Recognition Section */}
+      {/* Press/Recognition Section - Commented out for now */}
+      {/* 
       <section className="container mx-auto px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <PressLogos />
@@ -71,6 +72,7 @@ export default function AboutPage() {
       </section>
 
       <Separator className="container mx-auto" />
+      */}
 
       {/* Resume Download Section */}
       <section className="container mx-auto px-4 py-16">

@@ -616,6 +616,10 @@ class ParticleCursor {
     }
   }
 
+  public updateColors(colors: { base: string; halo: string; particle: string[] }): void {
+    this.options.colors = { ...this.options.colors, ...colors };
+  }
+
   public destroy(): void {
     this.stop();
     
@@ -677,14 +681,14 @@ function getThemeAwareColors(): { base: string; halo: string; particle: string[]
   if (isDark) {
     return {
       base: '#ffffff',
-      halo: '#cccccc',
-      particle: ['#ffffff', '#cccccc', '#999999', '#666666']
+      halo: 'rgba(255, 255, 255, 0.3)',
+      particle: ['#ffffff', '#e5e7eb', '#d1d5db', '#9ca3af']
     };
   } else {
     return {
       base: '#000000',
-      halo: '#333333',
-      particle: ['#000000', '#333333', '#666666', '#999999']
+      halo: 'rgba(0, 0, 0, 0.2)',
+      particle: ['#000000', '#374151', '#6b7280', '#9ca3af']
     };
   }
 }
@@ -711,12 +715,27 @@ export function initCursor(
   // Create cursor instance
   const cursor = new ParticleCursor(options, events);
   
+  // Listen for theme changes if theme-aware
+  let themeObserver: MutationObserver | null = null;
+  if (options.themeAware) {
+    themeObserver = new MutationObserver(() => {
+      const newColors = getThemeAwareColors();
+      cursor.updateColors(newColors);
+    });
+    
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+  
   // Start the cursor
   cursor.start();
   
   // Return destroy function
   return () => {
     cursor.destroy();
+    themeObserver?.disconnect();
     document.body.style.cursor = '';
   };
 }

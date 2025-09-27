@@ -29,7 +29,7 @@ export function ResumeDownload({
 
   return (
     <RiseIn>
-      <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 border-border/50">
+      <Card className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 border border-border/50">
         <CardContent className="p-8 text-center">
           <motion.div
             className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6"
@@ -101,7 +101,7 @@ export function ResumeDownload({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Last updated: {new Date().toLocaleDateString()}
+            Last updated: 27/9/2025
           </motion.div>
         </CardContent>
       </Card>

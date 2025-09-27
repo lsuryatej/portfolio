@@ -47,11 +47,7 @@ export function MotionProvider({ children, enableCursor = true }: MotionProvider
                 stiffness: 0.22,
                 damping: 0.82
               },
-              colors: {
-                base: '#3b82f6',
-                halo: '#8b5cf6',
-                particle: ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981']
-              },
+              themeAware: true, // Enable theme-aware colors
               magnetic: {
                 enabled: true,
                 radius: 60,
