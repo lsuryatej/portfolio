@@ -5,6 +5,7 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { velocityBus } from '@/lib/motion/scroll';
+import { metricsCollector } from '@/lib/metrics';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,6 +45,7 @@ export default function ScrollProvider({ children }: ScrollProviderProps) {
     lenisRef.current = lenis;
 
     let lastY = 0;
+    let lastFrameTime = performance.now();
     
     function raf(time: number) {
       lenis.raf(time);
@@ -59,6 +61,14 @@ export default function ScrollProvider({ children }: ScrollProviderProps) {
       
       // Update ScrollTrigger
       ScrollTrigger.update();
+      
+      // Track performance metrics
+      const now = performance.now();
+      
+      // Record frame for global performance tracking
+      metricsCollector.recordFrame('scroll-provider');
+      
+      lastFrameTime = now;
       
       requestAnimationFrame(raf);
     }
@@ -77,8 +87,12 @@ export default function ScrollProvider({ children }: ScrollProviderProps) {
 
     mediaQuery.addEventListener('change', handleChange);
 
+    // Start performance tracking
+    metricsCollector.startTracking('scroll-provider');
+
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
+      metricsCollector.stopTracking('scroll-provider');
       lenis.destroy();
     };
   }, []);

@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import GradientMesh from './GradientMesh';
 import ParticleField from './ParticleField';
 import PatternOverlay from './PatternOverlay';
+import GLField from './GLField';
+import { MOTION_FEATURES } from '@/lib/config/motion';
 
 interface SiteBackgroundProps {
   disabled?: boolean;
@@ -34,6 +36,11 @@ export default function SiteBackground({
 
   return (
     <>
+      {/* WebGL Shader Background (behind everything) */}
+      {MOTION_FEATURES.webglShaders && (variant === 'all') && (
+        <GLField disabled={shouldDisable} />
+      )}
+      
       {(variant === 'gradient' || variant === 'all') && (
         <GradientMesh disabled={shouldDisable} />
       )}
