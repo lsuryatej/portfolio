@@ -14,7 +14,7 @@ export function ProjectHeader({ project }: ProjectHeaderProps) {
     <header className="mb-12">
       <StaggerChildren className="space-y-6">
         <RiseIn>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight hero-text">
             {project.title}
           </h1>
         </RiseIn>

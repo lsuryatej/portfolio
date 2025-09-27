@@ -151,7 +151,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
 
           <CardHeader className="pb-3">
             <div className="flex items-start justify-between gap-2">
-              <h3 className="font-semibold text-lg leading-tight group-hover:text-primary transition-colors">
+              <h3 className="font-semibold text-lg leading-tight group-hover:text-primary transition-colors text-balance">
                 {project.title}
               </h3>
               {project.year && (
